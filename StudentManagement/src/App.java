@@ -1,6 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Group 2 - Student Management");
+        System.out.println("xinchao mn");
         
     }
 }
