@@ -40,4 +40,20 @@ public class Student{
         System.out.println("Age: "+getAge());
         System.out.println("Address: "+getAddress());
     }
+    public void removeStudent(String id) {
+        Student found = null;
+        for (Student student : students) {
+            if (student.getId().equals(id)) {
+                found = student;
+                break;
+            }
+        }
+        if (found != null) {
+            students.remove(found);
+            System.out.println("Xóa sinh viên thành công!");
+        } else {
+            System.out.println("Không tìm thấy sinh viên với ID: " + id);
+        }
+    }
 }
+
