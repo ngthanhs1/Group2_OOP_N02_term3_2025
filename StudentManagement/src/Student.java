@@ -50,10 +50,22 @@ public class Student{
         }
         if (found != null) {
             students.remove(found);
-            System.out.println("Xóa sinh viên thành công!");
+            System.out.println("Xoa thanh cong!");
         } else {
-            System.out.println("Không tìm thấy sinh viên với ID: " + id);
+            System.out.println("Khong tim thay msv: " + id);
         }
+    }
+    public void updateStudent(String id, String name, int age, String address) {
+        for (Student student : students) {
+            if (student.getId().equals(id)) {
+                student.setName(name);
+                student.setAge(age);
+                student.setAddress(address);
+                System.out.println("update thanh cong!");
+                return;
+            }
+        }
+        System.out.println("Khong tim thay msv: " + id);
     }
 }
 
