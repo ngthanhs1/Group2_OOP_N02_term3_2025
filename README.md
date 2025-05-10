@@ -1,3 +1,37 @@
-# HỆ THỐNG QUẢN LÝ ĐIỂM MÔN OOP CỦA SINH VIÊN CNTT LỚP K17 CNTT 02 
+# HỆ THỐNG QUẢN LÝ Bệnh viện
 # GIỚI THIỆU DỰ ÁN
-Đây là dự án quản lý thông tin của sinh viên.
+Đây là dự án quản lý Bệnh viện
+# Các thành viên trong nhóm
+Nguyễn Văn Thành-23010191
+Nguyễn Mạnh Quyền-23010198
+## Project : HospitalManagement
+# Object: Bệnh nhân,bệnh án,bác sĩ,thuốc,...
+-Bệnh nhân sẽ bao gồm tất cả thông tin liên quan đến bệnh 
+Class Benhnhan{
+    int patientID;
+    String fullName;
+    String Adress;
+    String Gender;
+    int Age;
+    String phone;
+    String email;
+}
+
+-Bệnh án sẽ bao gồm các thông tin liên quan đến các bệnh án
+
+Class Benh_an{
+    int patientID;
+    int doctorID;
+    int recordID;
+}
+
+-Bác sĩ sẽ bao gồm tất cả thông tin liên quan đến bác sĩ
+Class Doctor{
+    int doctorID;
+    String fullName;
+    String Adress;
+    String Gender;
+    int Age;
+    String phone;
+    String email;
+}
