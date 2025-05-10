@@ -1,4 +1,4 @@
-package StudentManagement.test;
+package HospitalManagement.test;
 
 import java.util.Random;
 
