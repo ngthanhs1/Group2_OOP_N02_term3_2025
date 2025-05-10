@@ -1,1 +1,3 @@
-# Group2_OOP_N02_term3_2025
+# HỆ THỐNG QUẢN LÝ SINH VIÊN
+# GIỚI THIỆU DỰ ÁN
+Đây là dự án quản lý thông tin của sinh viên.
