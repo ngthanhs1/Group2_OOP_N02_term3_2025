@@ -1,10 +1,13 @@
 # HỆ THỐNG QUẢN LÝ BỆNH VIỆN
-# GIỚI THIỆU DỰ ÁN
+
+## GIỚI THIỆU DỰ ÁN
 Đây là dự án quản lý Bệnh viện
-# Các thành viên trong nhóm
-Nguyễn Văn Thành-23010191
-Nguyễn Mạnh Quyền-23010198
+## Các thành viên trong nhóm
+Nguyễn Văn Thành-23010191:Phát triển phần mềm
+Nguyễn Mạnh Quyền-23010198:Phát triển phần mềm
+
 ## Project : HospitalManagement
+
 # Object: Bệnh nhân,bệnh án,bác sĩ,thuốc,...
 -Bệnh nhân sẽ bao gồm tất cả thông tin liên quan đến bệnh 
 Class Benhnhan{
