@@ -1,4 +1,4 @@
-# HỆ THỐNG QUẢN LÝ Bệnh viện
+# HỆ THỐNG QUẢN LÝ BỆNH VIỆN
 # GIỚI THIỆU DỰ ÁN
 Đây là dự án quản lý Bệnh viện
 # Các thành viên trong nhóm
