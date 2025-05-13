@@ -2,10 +2,8 @@ import HospitalManagement.test.TestRandNumber;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("hi");
-        System.out.println();
-        TestRandNumber sr = new TestRandNumber();
-        int number = sr.getTestRandNumber(50, 100);
-        System.out.println("So ngau nhien: "+number);
+       Patient patient = new Patient(1, "Quyen", 17, "Nam", "Ha Nam", "0358309009");
+        patient.printInfo();
+
     }
 }
