@@ -5,6 +5,8 @@ public class Patient {
      String gender;
      String address;
      String phoneNumber;
+     String address;
+     String phoneNumber;
     
     public Patient(int id, String name, int age, String gender, String address, String phoneNumber) {
         this.id = id;
