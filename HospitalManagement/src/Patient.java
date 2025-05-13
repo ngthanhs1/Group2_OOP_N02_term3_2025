@@ -1,6 +1,6 @@
 public class Patient {
-    private int id;
-    private String name;
+     int id;
+     String name;
     private int age;
     private String gender;
     private String address;
