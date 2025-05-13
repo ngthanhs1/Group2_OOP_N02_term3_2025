@@ -6,6 +6,6 @@ public class App {
         
         System.out.println();
         Patient sc = new Patient(1, "Thanh", 20, "Nam", "Ha Noi", "0987654321");
-        System.out.println(sc.getId()+" "+sc.getName()+" "+sc.getAddress());
+        System.out.println(sc.id +" "+sc.name+" "+sc.age);
     }
 }
