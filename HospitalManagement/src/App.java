@@ -13,7 +13,8 @@ public class App {
     System.out.println("HIIHII");
     
     TestNumber.display();
-    TestRandNumber.getTestRandNumber(1, 2);
+    int rand = TestRandNumber.getTestRandNumber(1, 10);
+        System.out.println("Random number: " + rand);
     TestRandNumber.in();
     }
 }
