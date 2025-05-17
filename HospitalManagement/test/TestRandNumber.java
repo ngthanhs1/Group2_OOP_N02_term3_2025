@@ -9,7 +9,7 @@ public class TestRandNumber {
         random = new Random();
     };
 
-    public int getTestRandNumber(int min,int max){
+    public  int getTestRandNumber(int min,int max){
         return random.nextInt(max-min+1) + min;
     }
 }
