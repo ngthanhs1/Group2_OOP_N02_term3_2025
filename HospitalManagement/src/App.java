@@ -1,6 +1,6 @@
 import HospitalManagement.test.TestNumber;
 import HospitalManagement.test.TestRandNumber;
-
+import HospitalManagement.test.Testpatient;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -16,6 +16,7 @@ public class App {
     int rand = TestRandNumber.getTestRandNumber(1, 10);
         System.out.println("Random number: " + rand);
     TestRandNumber.in();
+    Testpatient.display();
     }
 }
 
