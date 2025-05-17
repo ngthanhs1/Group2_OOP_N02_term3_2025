@@ -1,5 +1,5 @@
 import HospitalManagement.test.TestRandNumber;
-import HospitalManagement.test.TestUser;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -13,11 +13,8 @@ public class App {
 */
 
 
-
-
-   testUser.testReview();
-  // TestRandNumber testrand = new TestRandNumber();
-   //testrand.getTestRandNumber(1,100);
+  TestRandNumber testrand = new TestRandNumber();
+   testrand.getTestRandNumber(1,10);
     }
 
 }
