@@ -1,6 +1,8 @@
 import HospitalManagement.test.TestNumber;
 import HospitalManagement.test.TestRandNumber;
 import HospitalManagement.test.Testpatient;
+import HospitalManagement.src.Time;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -17,6 +19,9 @@ public class App {
         System.out.println("Random number: " + rand);
     TestRandNumber.in();
     Testpatient.display();
+
+    Time now = new Time(14, 30, 45);
+    now.display();
     }
 }
 
