@@ -16,11 +16,14 @@ public class App {
     
     TestNumber.display();
     int rand = TestRandNumber.getTestRandNumber(1, 10);
-        System.out.println("Random number: " + rand);
+    System.out.println("Random number: " + rand);
     TestRandNumber.in();
     Testpatient.display();
 
     Time now = new Time(14, 30, 45);
+    now.display();
+    now.setSecond(59);
+    now.nextSecond();
     now.display();
     }
 }

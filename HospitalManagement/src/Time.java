@@ -33,8 +33,37 @@ public class Time {
     public void setSecond(int second) {
         this.second = second;
     }
+	public void nextSecond() {
+		if (hour == 23 && minute == 59 && second == 59) {
+			hour = 0;
+			minute = 0;
+			second = 0;
+			return;
+		}
+		if (minute == 59 && second == 59) {
+			hour++;
+			minute = 0;
+			second = 0;
+			return;
+		}
+		if (second == 59) {
+			minute++;
+			second = 0;
+			return;
+		}
+		second++;
+	}
 
     public void display() {
-        System.out.printf("Thoi gian hien tai: %02d:%02d:%02d\n", hour, minute, second);
+        String hour = this.hour + "";
+		String minute = this.minute + "";
+		String second = this.second + "";
+		if (hour.length() == 1)
+			hour = "0" + hour;
+		if (minute.length() == 1)
+			minute = "0" + minute;
+		if (second.length() == 1)
+			second = "0" + second;
+		System.out.println(hour + ":" + minute + ":" + second);
     }
 }
