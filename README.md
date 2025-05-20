@@ -19,3 +19,5 @@ Yêu cầu chính:
 ## Sơ đồ khối
 ### 1.UML Class Diagram
 <img src ="img/class.png">
+### 2.UML Sequence Diagram
+<img src ="img/Untitled.png">
