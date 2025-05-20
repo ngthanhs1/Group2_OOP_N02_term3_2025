@@ -18,4 +18,4 @@ Yêu cầu chính:
 
 ## Sơ đồ khối
 ### 1.UML Class Diagram
-<img src ="img/test.png">
+<img src ="img/class.png">
