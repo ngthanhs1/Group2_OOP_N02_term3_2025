@@ -1,68 +1,80 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Patient {
-    private int id;
+   private String id;
     private String name;
-    private int age;
+    private Calendar dob;
     private String gender;
     private String address;
-    private String phoneNumber;
-    
-    public Patient(int id, String name, int age, String gender, String address, String phoneNumber) {
+    private String phone;
+    private String medicalHistory;
+    public Patient() {
+    }
+    public Patient(String id, String name, Calendar dob, String gender, String address, String phone,
+            String medicalHistory) {
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.dob = dob;
         this.gender = gender;
         this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
+        this.medicalHistory = medicalHistory;
     }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
-
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getAge() {
-        return age;
+    public Calendar getDob() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(dob.getTime());
     }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setDob(Calendar dob) {
+        this.dob = dob;
     }
-
     public String getGender() {
         return gender;
     }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
-
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-    
-
+    public String getMedicalHistory() {
+        return medicalHistory;
+    }
+    public void setMedicalHistory(String medicalHistory) {
+        this.medicalHistory = medicalHistory;
+    }
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", dob='" + dob + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", medicalHistory='" + medicalHistory + '\'' +
+                '}';
+    }
     
 }
