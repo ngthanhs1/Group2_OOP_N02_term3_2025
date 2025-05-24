@@ -1,3 +1,5 @@
+package HospitalManagement;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -21,6 +23,11 @@ public class Patient {
         this.phone = phone;
         this.medicalHistory = medicalHistory;
     }
+    
+    public Patient(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
     public String getId() {
         return id;
     }
@@ -34,8 +41,7 @@ public class Patient {
         this.name = name;
     }
     public Calendar getDob() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        return dateFormat.format(dob.getTime());
+        return dob;
     }
     public void setDob(Calendar dob) {
         this.dob = dob;
