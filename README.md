@@ -16,8 +16,37 @@ Yêu cầu chính:
 + Thêm, sửa, xóa bệnh án.
 - Có chức năng gán bệnh nhân cho phòng điều trị.
 
+## Các chức năng
+### Addition(Thêm vào)
+public ArrayList<Patient> addPatient(Patient patient) {
+        patients.add(patient);
+        return patients;
+    }
+### Inds(Cập nhật)
+### Edit(Chỉnh sửa)
+public ArrayList<Patient> editPatient(String fullname, int patientID) {
+        for (int i = 0; i < patients.size(); i++) {
+            if (patients.get(i).patientId == patientID) {
+                System.out.print("true");
+                patients.get(i).fullname = fullname;
+            }
+        }
+        return patients;
+    }
+### Remove(Xóa)
+public ArrayList<Patient> deletePatient(int patientID) {
+        for (int i = 0; i < patients.size(); i++) {
+            if (patients.get(i).patientId == patientID) {
+                patients.remove(i);
+                break; // Dừng sau khi xoá để tránh lỗi ConcurrentModificationException
+            }
+        }
+        return patients;
+    }
 ## Sơ đồ khối
 ### 1.UML Class Diagram
 <img src ="img/class.png">
+
 ### 2.UML Sequence Diagram
 <img src ="img/Untitled.png">
+
