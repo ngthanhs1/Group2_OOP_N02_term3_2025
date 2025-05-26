@@ -26,7 +26,8 @@ public class App {
     now.nextSecond();
     now.display();
   */
-  
+  TestPatient s = new TestPatient();
+  s.testEditDelete();
     }
 }
 
