@@ -9,7 +9,5 @@ public class TestRandNumber {
         Random rand = new Random();
         return rand.nextInt((max - min + 1)) + min;
     }
-    public static void in(){
-        System.out.println("buc");
-    }
+    
 }

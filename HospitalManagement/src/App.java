@@ -26,8 +26,7 @@ public class App {
     now.nextSecond();
     now.display();
   */
-   TestPatient n = new TestPatient();
-  n.play();
+  
     }
 }
 

@@ -37,8 +37,7 @@ public class BenhAn {
     }
 
     public String getTsb() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        return dateFormat.format(dob.getTime());
+        return tsb;
     }
 
     public void setTsb(String tsb) {

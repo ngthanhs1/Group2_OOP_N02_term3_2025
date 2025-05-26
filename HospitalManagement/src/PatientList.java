@@ -1,20 +1,18 @@
-
 import java.util.ArrayList;
 
 public class PatientList {
     ArrayList<Patient> patients = new ArrayList<>();
 
-    
     public void addPatient(Patient p) {
         patients.add(p);
         System.out.println("Đã thêm bệnh nhân.");
     }
 
-    public void editPatient(String id, Patient updatedPatient) {
-        for (int i = 0; i < patients.size(); i++) {
-            if (patients.get(i).getId().equals(id)) {
-                patients.set(i, updatedPatient);
-                System.out.println("Đã cập nhật thông tin.");
+    public void editPatient(String id, String newName) {
+        for (Patient p : patients) {
+            if (p.getId().equals(id)) {
+                p.setName(newName);
+                System.out.println("Đã cập nhật tên bệnh nhân.");
                 return;
             }
         }
@@ -41,8 +39,9 @@ public class PatientList {
                 System.out.println(p);
             }
         }
-     public ArrayList<Patient> getPatients() {
-            return patients;
-        }
+    }
 
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
 }
