@@ -21,9 +21,8 @@ public class TestPatient {
                 new GregorianCalendar(1999, Calendar.APRIL, 5),
                 "Nam", "Hải Phòng", "0987654321", "Tiểu đường");
 
-        Patient p3 = new Patient("BN003", "Le Hoang Nam",
-                new GregorianCalendar(1988, Calendar.JULY, 20),
-                "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp");
+        Patient p3 = new Patient("BN003", "Le Hoang Nam",new GregorianCalendar(1988, Calendar.JULY, 20),
+        "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp");
 
         pl.add(p1);
         pl.add(p2);
@@ -73,7 +72,7 @@ public class TestPatient {
     Scanner snr = new Scanner(System.in);
     PatientList patientList = new PatientList();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    sdf.setLenient(false); // Không cho phép ngày tháng sai lệch như 32/01/2024
+    sdf.setLenient(false);
 
     System.out.print("Nhập số lượng bệnh nhân muốn thêm: ");
     int n = Integer.parseInt(snr.nextLine());

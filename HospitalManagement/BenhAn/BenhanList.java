@@ -1,7 +1,8 @@
+package HospitalManagement.BenhAn;
+
 import java.util.ArrayList;
 
 public class BenhanList {
-
     private ArrayList<BenhAn> danhSachBenhAn = new ArrayList<>();
 
     public void themBenhAn(BenhAn ba) {
@@ -10,9 +11,9 @@ public class BenhanList {
 
     public void suaBenhAn(String id, String chuanDoanMoi) {
         for (BenhAn ba : danhSachBenhAn) {
-            if (ba.getId().equals(id)) {
+            if (ba.getId().equalsIgnoreCase(id)) {
                 ba.setChuandoan(chuanDoanMoi);
-                System.out.println("Đã cập nhật chẩn đoán.");
+                System.out.println("Đã cập nhật chẩn đoán cho bệnh án có ID: " + id);
                 return;
             }
         }
@@ -20,14 +21,12 @@ public class BenhanList {
     }
 
     public void xoaBenhAn(String id) {
-        for (int i = 0; i < danhSachBenhAn.size(); i++) {
-            if (danhSachBenhAn.get(i).getId().equals(id)) {
-                danhSachBenhAn.remove(i);
-                System.out.println("✅ Đã xoá bệnh án.");
-                return;
-            }
+        boolean removed = danhSachBenhAn.removeIf(ba -> ba.getId().equalsIgnoreCase(id));
+        if (removed) {
+            System.out.println("Đã xoá bệnh án có ID: " + id);
+        } else {
+            System.out.println("Không tìm thấy bệnh án với ID: " + id);
         }
-        System.out.println("Không tìm thấy bệnh án với ID: " + id);
     }
 
     public void inDanhSachBenhAn() {

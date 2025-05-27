@@ -1,17 +1,20 @@
 
-
+import HospitalManagement.Test.TestBenhan;
 import HospitalManagement.Test.TestPatient;
 
 
 public class App {
   public static void main(String[] args) throws Exception {
-  System.out.println("hi");
+  System.out.println("chao ca nha iu<>");
 
-  TestPatient tpt = new TestPatient();
+  // TestPatient tpt = new TestPatient();
+  // tpt.addPatientByInput();
+  // tpt.display();
 
-  tpt.addPatientByInput();
+  TestBenhan tba = new TestBenhan();
+  tba.addBenhanByInput();
+  tba.inDanhSachBenhAn();
 
-  tpt.display();
   }
 
 }
