@@ -1,3 +1,5 @@
+package HospitalManagement.Patientt;
+
 import java.util.ArrayList;
 
 public class PatientList {

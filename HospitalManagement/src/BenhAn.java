@@ -1,78 +1,64 @@
-package HospitalManagement.BenhAn;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 
 public class BenhAn {
     private String id;
     private String chuandoan;
-    private Calendar dob;
+    private java.util.Calendar dob;
     private String tsb;
     private String trieuchung;
     private String mbn;
 
     public BenhAn() {
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getChuandoan() {
         return chuandoan;
     }
-
     public void setChuandoan(String chuandoan) {
         this.chuandoan = chuandoan;
     }
-
-    public Calendar getDob() {
+    public java.util.Calendar getDob() {
         return dob;
     }
-
-    public void setDob(Calendar dob) {
+    public void setDob(java.util.Calendar dob) {
         this.dob = dob;
     }
-
     public String getTsb() {
         return tsb;
     }
-
     public void setTsb(String tsb) {
         this.tsb = tsb;
     }
-
     public String getTrieuchung() {
         return trieuchung;
     }
-
     public void setTrieuchung(String trieuchung) {
         this.trieuchung = trieuchung;
     }
 
+
     public String getMbn() {
         return mbn;
     }
-
     public void setMbn(String mbn) {
         this.mbn = mbn;
     }
 
+
     @Override
     public String toString() {
-       return "Doctor{" +
+        return "BenhAn{" +
                 "id='" + id + '\'' +
                 ", mbn='" + mbn + '\'' +
-                ", dob='" + dob + '\'' +
+                ", dob='" + dob.getTime() + '\'' +
                 ", trieuchung='" + trieuchung + '\'' +
                 ", tsb='" + tsb + '\'' +
                 ", chuandoan='" + chuandoan + '\'' +
                 '}';
     }
-    
-    
-
 }

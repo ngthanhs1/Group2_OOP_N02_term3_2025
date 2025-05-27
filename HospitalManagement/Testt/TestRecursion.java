@@ -1,4 +1,4 @@
-package HospitalManagement.test;
+package HospitalManagement.Testt;
 
 public class TestRecursion {
     

@@ -1,7 +1,6 @@
-package HospitalManagement.test;
+package HospitalManagement.Review;
 
-import HospitalManagement.Patient;
-import HospitalManagement.PatientList;
+import HospitalManagement.Patientt.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -37,26 +36,26 @@ public class TestPatient {
             patientList.addPatient(p);
         }
 
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner pt = new Scanner(System.in)) {
+            // Cập nhật tên bệnh nhân
+            System.out.print("Nhập ID bệnh nhân cần cập nhật: ");
+            String id = pt.nextLine();
 
-        // Cập nhật tên bệnh nhân
-        System.out.print("Nhập ID bệnh nhân cần cập nhật: ");
-        String id = scanner.nextLine();
+            System.out.print("Nhập tên mới cho bệnh nhân: ");
+            String newName = pt.nextLine();
 
-        System.out.print("Nhập tên mới cho bệnh nhân: ");
-        String newName = scanner.nextLine();
+            patientList.editPatient(id, newName);
 
-        patientList.editPatient(id, newName);
+            // In danh sách sau khi cập nhật
+            System.out.println("Danh sách sau khi cập nhật:");
+            patientList.printPatientList();
 
-        // In danh sách sau khi cập nhật
-        System.out.println("Danh sách sau khi cập nhật:");
-        patientList.printPatientList();
+            // Xoá bệnh nhân
+            System.out.print("Nhập ID bệnh nhân cần xoá: ");
+            String deleteId = pt.nextLine();
 
-        // Xoá bệnh nhân
-        System.out.print("Nhập ID bệnh nhân cần xoá: ");
-        String deleteId = scanner.nextLine();
-
-        patientList.deletePatient(deleteId);
+            patientList.deletePatient(deleteId);
+        }
 
         System.out.println("Danh sách sau khi xoá:");
         patientList.printPatientList();
@@ -65,5 +64,13 @@ public class TestPatient {
     public void testDelete(PatientList patientList, String patientID) {
         patientList.deletePatient(patientID);
         patientList.printPatientList();
+    }
+    public static void display(){
+     //   for (int i =0 ; i< pl.size(); i++)
+        {
+           // System.out.println("test" + pl.get(i).getName());
+
+             System.out.println("test......" );
+        }
     }
 }

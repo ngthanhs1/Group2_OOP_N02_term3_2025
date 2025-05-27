@@ -1,5 +1,6 @@
+package HospitalManagement.Patientt;
 
-import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 
 public class Patient {
@@ -22,11 +23,14 @@ public class Patient {
         this.phone = phone;
         this.medicalHistory = medicalHistory;
     }
-    
+
     public Patient(String id, String name) {
         this.id = id;
         this.name = name;
+       
     }
+    
+   
     public String getId() {
         return id;
     }

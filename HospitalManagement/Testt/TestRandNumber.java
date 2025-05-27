@@ -1,4 +1,4 @@
-package HospitalManagement.test;
+package HospitalManagement.Testt;
 
 import java.util.Random;
 
