@@ -11,6 +11,7 @@ public class Patient {
     private String address;
     private String phone;
     private String medicalHistory;
+
     public Patient() {
     }
     public Patient(String id, String name, Calendar dob, String gender, String address, String phone,
@@ -24,12 +25,6 @@ public class Patient {
         this.medicalHistory = medicalHistory;
     }
 
-    public Patient(String id, String name) {
-        this.id = id;
-        this.name = name;
-       
-    }
-    
    
     public String getId() {
         return id;

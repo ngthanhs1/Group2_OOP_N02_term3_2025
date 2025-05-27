@@ -65,12 +65,10 @@ public class TestPatient {
         patientList.deletePatient(patientID);
         patientList.printPatientList();
     }
-    public static void display(){
-     //   for (int i =0 ; i< pl.size(); i++)
+    public void display(){
+         for (int i =0 ; i< pl.size(); i++)
         {
-           // System.out.println("test" + pl.get(i).getName());
-
-             System.out.println("test......" );
+          // System.out.println("test: " + pl.get(i).getName());
         }
     }
 }
