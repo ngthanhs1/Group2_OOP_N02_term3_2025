@@ -1,8 +1,4 @@
-import HospitalManagement.test.TestNumber;
-import HospitalManagement.test.TestPatient;
-import HospitalManagement.test.TestRandNumber;
-import HospitalManagement.test.Testpatient;
-import HospitalManagement.src.Time;
+
 
 
 public class App {
@@ -26,8 +22,7 @@ public class App {
     now.nextSecond();
     now.display();
   */
-  TestPatient s = new TestPatient();
-  s.testEditDelete();
-    }
+  TestBenhAn test = new TestBenhAn();
+  System.out.println(test.);
 }
 

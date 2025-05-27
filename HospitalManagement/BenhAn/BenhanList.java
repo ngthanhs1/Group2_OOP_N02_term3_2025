@@ -1,3 +1,4 @@
+package HospitalManagement.BenhAn;
 import java.util.ArrayList;
 
 public class BenhanList {

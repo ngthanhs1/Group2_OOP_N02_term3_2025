@@ -1,7 +1,10 @@
-package HospitalManagement.test;
-
+package HospitalManagement.review;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+
+import HospitalManagement.BenhAn.BenhAn;
+import HospitalManagement.BenhAn.*;
+
 import java.util.Calendar;
 
 public class TestBenhAn {
