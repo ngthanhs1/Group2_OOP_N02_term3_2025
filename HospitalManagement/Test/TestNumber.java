@@ -1,4 +1,4 @@
-package HospitalManagement.Testt;
+package HospitalManagement.Test;
 
 public class TestNumber {
    public static void display(){

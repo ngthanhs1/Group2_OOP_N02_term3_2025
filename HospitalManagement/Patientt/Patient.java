@@ -1,10 +1,10 @@
 package HospitalManagement.Patientt;
 
-
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public class Patient {
-   private String id;
+    private String id;
     private String name;
     private Calendar dob;
     private String gender;
@@ -12,8 +12,7 @@ public class Patient {
     private String phone;
     private String medicalHistory;
 
-    public Patient() {
-    }
+    
     public Patient(String id, String name, Calendar dob, String gender, String address, String phone,
             String medicalHistory) {
         this.id = id;
@@ -24,8 +23,6 @@ public class Patient {
         this.phone = phone;
         this.medicalHistory = medicalHistory;
     }
-
-   
     public String getId() {
         return id;
     }
@@ -47,38 +44,45 @@ public class Patient {
     public String getGender() {
         return gender;
     }
+
+
+
     public void setGender(String gender) {
         this.gender = gender;
     }
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getPhone() {
         return phone;
     }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public String getMedicalHistory() {
         return medicalHistory;
     }
+
     public void setMedicalHistory(String medicalHistory) {
         this.medicalHistory = medicalHistory;
     }
+
     @Override
     public String toString() {
-        return "Patient{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", dob='" + dob + '\'' +
-                ", gender='" + gender + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", medicalHistory='" + medicalHistory + '\'' +
-                '}';
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return "Mã bệnh nhân: " + id + "\n"
+                + "Họ tên: " + name + "\n"
+                + "Ngày sinh: " + sdf.format(dob.getTime()) + "\n"
+                + "Giới tính: " + gender + "\n"
+                + "Địa chỉ: " + address + "\n"
+                + "SĐT: " + phone + "\n"
+                + "Tiền sử bệnh: " + medicalHistory + "\n";
     }
-    
 }

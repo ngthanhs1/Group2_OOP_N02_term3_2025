@@ -3,47 +3,35 @@ package HospitalManagement.Patientt;
 import java.util.ArrayList;
 
 public class PatientList {
-    ArrayList<Patient> patients = new ArrayList<>();
+    private ArrayList<Patient> list = new ArrayList<>();
 
     public void addPatient(Patient p) {
-        patients.add(p);
-        System.out.println("Đã thêm bệnh nhân.");
+        list.add(p);
     }
 
     public void editPatient(String id, String newName) {
-        for (Patient p : patients) {
-            if (p.getId().equals(id)) {
+        for (Patient p : list) {
+            if (p.getId().equalsIgnoreCase(id)) {
                 p.setName(newName);
-                System.out.println("Đã cập nhật tên bệnh nhân.");
+                System.out.println("Đã cập nhật tên cho bệnh nhân có ID: " + id);
                 return;
             }
         }
-        System.out.println("Không tìm thấy bệnh nhân có ID: " + id);
+        System.out.println("Không tìm thấy bệnh nhân với ID: " + id);
     }
 
     public void deletePatient(String id) {
-        for (int i = 0; i < patients.size(); i++) {
-            if (patients.get(i).getId().equals(id)) {
-                patients.remove(i);
-                System.out.println("Đã xóa bệnh nhân.");
-                return;
-            }
-        }
-        System.out.println("Không tìm thấy bệnh nhân có ID: " + id);
+        list.removeIf(p -> p.getId().equalsIgnoreCase(id));
+        System.out.println("Đã xoá bệnh nhân có ID: " + id);
     }
 
     public void printPatientList() {
-        if (patients.isEmpty()) {
+        if (list.isEmpty()) {
             System.out.println("Danh sách bệnh nhân trống.");
         } else {
-            System.out.println("Danh sách bệnh nhân:");
-            for (Patient p : patients) {
+            for (Patient p : list) {
                 System.out.println(p);
             }
         }
-    }
-
-    public ArrayList<Patient> getPatients() {
-        return patients;
     }
 }
