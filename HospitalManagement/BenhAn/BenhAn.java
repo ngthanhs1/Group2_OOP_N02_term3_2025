@@ -1,44 +1,65 @@
 package HospitalManagement.BenhAn;
 
-import HospitalManagement.Patientt.Patient;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class BenhAn {
-    private String id;            
-    private Patient patient;
-    private Calendar ngayLap;
+import HospitalManagement.CRUD.CoId;
+
+public class BenhAn implements CoId{
+    private String id;
+    private String patientId;
+    private Calendar ngayKham;
     private String trieuChung;
     private String tienSuBenh;
     private String chanDoan;
 
-    public BenhAn(String id, Patient patient, Calendar ngayLap, String trieuChung, String tienSuBenh, String chanDoan) {
+    public BenhAn(String id, String patientId, Calendar ngayKham,
+                  String trieuChung, String tienSuBenh, String chanDoan) {
         this.id = id;
-        this.patient = patient;
-        this.ngayLap = ngayLap;
+        this.patientId = patientId;
+        this.ngayKham = ngayKham;
         this.trieuChung = trieuChung;
         this.tienSuBenh = tienSuBenh;
         this.chanDoan = chanDoan;
     }
-
+    
     public String getId() {
         return id;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Calendar getNgayLap() {
-        return ngayLap;
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public Calendar getNgayKham() {
+        return ngayKham;
+    }
+
+    public void setNgayKham(Calendar ngayKham) {
+        this.ngayKham = ngayKham;
     }
 
     public String getTrieuChung() {
         return trieuChung;
     }
 
+    public void setTrieuChung(String trieuChung) {
+        this.trieuChung = trieuChung;
+    }
+
     public String getTienSuBenh() {
         return tienSuBenh;
+    }
+
+    public void setTienSuBenh(String tienSuBenh) {
+        this.tienSuBenh = tienSuBenh;
     }
 
     public String getChanDoan() {
@@ -51,14 +72,7 @@ public class BenhAn {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return  "----- BỆNH ÁN -----\n" +
-                "Mã bệnh án: " + id + "\n" +
-                "Ngày lập: " + sdf.format(ngayLap.getTime()) + "\n" +
-                "Triệu chứng: " + trieuChung + "\n" +
-                "Tiền sử bệnh: " + tienSuBenh + "\n" +
-                "Chẩn đoán: " + chanDoan + "\n" +
-                patient.toString() +
-                "-------------------\n";
+        return String.format("Mã bệnh án: %s | Mã bệnh nhân: %s | Ngày khám: %tF | Triệu chứng: %s | Tiền sử: %s | Chẩn đoán: %s",
+                id, patientId, ngayKham, trieuChung, tienSuBenh, chanDoan);
     }
 }

@@ -1,9 +1,12 @@
 package HospitalManagement.Patientt;
 
 import java.util.Calendar;
+
+import HospitalManagement.CRUD.CoId;
+
 import java.text.SimpleDateFormat;
 
-public class Patient {
+public class Patient implements CoId{
     private String id;
     private String name;
     private Calendar dob;
@@ -44,8 +47,6 @@ public class Patient {
     public String getGender() {
         return gender;
     }
-
-
 
     public void setGender(String gender) {
         this.gender = gender;

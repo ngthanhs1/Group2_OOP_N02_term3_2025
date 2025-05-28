@@ -1,4 +1,4 @@
-package HospitalManagement.Schedule;
+/* package HospitalManagement.Schedule;
 import java.util.ArrayList;
 
 public class ScheduleList {
@@ -51,3 +51,4 @@ public class ScheduleList {
         return danhSach;
     }
 }
+*/

@@ -3,7 +3,9 @@ package HospitalManagement.Schedule;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Schedule {
+import HospitalManagement.CRUD.CoId;
+
+public class Schedule implements CoId{
     private String id;
     private String benhanId;
     private String patientId;
