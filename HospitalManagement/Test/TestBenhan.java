@@ -15,9 +15,7 @@ public class TestBenhan {
     private final ArrayList<Patient> dsPatient = testPatient.addList();
     private final BenhanList dsBenhAn = new BenhanList();
 
-    /**
-     * Tạo danh sách bệnh án mẫu liên kết với bệnh nhân
-     */
+     //Tạo danh sách bệnh án mẫu liên kết với bệnh nhân
     public void taoBenhAnMau() {
         dsBenhAn.themBenhAn(new BenhAn("BA001", dsPatient.get(0),new GregorianCalendar(2024, Calendar.JANUARY, 10),
             "Sốt, ho", dsPatient.get(0).getMedicalHistory(), "Cảm cúm"));

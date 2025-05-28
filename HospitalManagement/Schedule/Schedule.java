@@ -1,4 +1,6 @@
+package HospitalManagement.Schedule;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Schedule {
@@ -56,15 +58,17 @@ public class Schedule {
     }
     @Override
     public String toString() {
-       return "Schedule{" +
-                "id='" + id + '\'' +
-                ", benhanId='" + benhanId + '\'' +
-                ", patientId='" + patientId + '\'' +
-                ", date=" + getDate() +
-                ", tenthuoc='" + tenthuoc + '\'' +
-                ", soluong='" + soluong + '\'' +
-                '}';
-    }
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    String dateStr = (date != null) ? sdf.format(date.getTime()) : "null";
 
+    return "Schedule: " +
+            "id='" + id + '\'' +
+            ", benhanId='" + benhanId + '\'' +
+            ", patientId='" + patientId + '\'' +
+            ", date=" + dateStr +
+            ", tenthuoc='" + tenthuoc + '\'' +
+            ", soluong='" + soluong + '\'' +
+            ' ';
+}
     
 }

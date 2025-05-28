@@ -1,6 +1,7 @@
 
 import HospitalManagement.Test.TestBenhan;
 import HospitalManagement.Test.TestPatient;
+import HospitalManagement.Test.TestSchedule;
 
 
 public class App {
@@ -17,6 +18,11 @@ public class App {
   // tba.inDanhSachBenhAn();
   // tba.testSuaBenhAn();
   // tba.inDanhSachBenhAn();
+
+  TestSchedule tse = new TestSchedule();
+  tse.khoiTaoMau();
+  tse.hienThi();
+
 
   }
 
