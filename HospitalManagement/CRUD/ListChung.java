@@ -2,8 +2,6 @@ package HospitalManagement.CRUD;
 
 import java.util.ArrayList;
 
-import HospitalManagement.Patientt.Patient;
-
 public class ListChung<T extends CoId> {
     private ArrayList<T> danhSach = new ArrayList<>();
 
@@ -53,31 +51,7 @@ public class ListChung<T extends CoId> {
         }
     }
 
-    public ArrayList<T> getDanhSach() {
+    public ArrayList<T> getList() {
         return danhSach;
-    }
-
-    public void add(Patient p) {
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
-    }
-
-    public void printAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'printAll'");
-    }
-
-    public void delete(String deleteId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-
-    public Patient findById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
     }
 }

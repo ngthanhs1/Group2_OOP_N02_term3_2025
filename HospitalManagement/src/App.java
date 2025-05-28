@@ -2,29 +2,31 @@ package HospitalManagement.src;
 
 import HospitalManagement.Test.TestBenhan;
 import HospitalManagement.Test.TestPatient;
+import HospitalManagement.Test.TestSchedule;
 
 public class App {
     public static void main(String[] args) throws Exception {
-    System.out.println("chao ca nha iu<>");
+    System.out.println("Chao ca nha iu :3");
     System.out.println();
+
+    // TestPatient tpt = new TestPatient();
+    // tpt.themDanhSachMau();
+    // tpt.addPatient();
+    // tpt.inPatient();
+
+    // TestPatient tpt = new TestPatient();
+    // tpt.themDanhSachMau();
+    // TestBenhan tba = new TestBenhan(tpt);
+    // tba.themBenhAn();
+    // tba.inBenhAn();
 
     TestPatient tpt = new TestPatient();
     tpt.themDanhSachMau();
-    tpt.addPatient();
     tpt.inPatient();
-
-    // TestBenhan tba = new TestBenhan();
-    // tba.addBenhAn();
-    // tba.inBenhAn();
-    // tba.updateBenhAn();
-    // tba.inBenhAn();
-
-//   TestSchedule tse = new TestSchedule();
-//   tse.khoitaoBAPT();
-//   tse.inDanhSachSchedule();
-//   tse.timKiem();
-//   tse.xoaSchedule();
-//   tse.inDanhSachSchedule();
-
+    TestBenhan tbn = new TestBenhan(tpt);
+    tbn.themBenhAn();
+    TestSchedule tse = new TestSchedule(tpt, tbn);
+    tse.themSchedule();
+    tse.inSchedule();
   }
 }

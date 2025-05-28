@@ -8,72 +8,33 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestBenhan {
-    private final TestPatient testPatient = new TestPatient();
-    private final ArrayList<Patient> dsPatient = testPatient.addList(); // Khởi tạo 1 lần
-    private final ListChung<BenhAn> dsBenhAn = new ListChung<>();
+    private ListChung<BenhAn> dsBenhan = new ListChung<>();
+    private ListChung<Patient> dsPatient;
 
-    private final Object[][] data = {
-        {"BA001", 0, 2024, Calendar.JANUARY, 10, "Sốt, ho", "Cảm cúm"},
-        {"BA002", 1, 2024, Calendar.MARCH, 12, "Khó thở", "Viêm phổi"},
-        {"BA003", 2, 2024, Calendar.APRIL, 25, "Đau đầu", "Thiếu máu não"}
-    };
-
-    public void addBenhAn() {
-    if (!dsBenhAn.getDanhSach().isEmpty()) {
-        System.out.println("Bệnh án đã tồn tại, không thêm lại.");
-        return;
-    }
-
-    for (Object[] row : data) {
-        String id = (String) row[0];
-        int patientIndex = (int) row[1];
-        Calendar ngayKham = new GregorianCalendar((int) row[2], (int) row[3], (int) row[4]);
-        String trieuChung = (String) row[5];
-        String chanDoan = (String) row[6];
-
-        if (dsBenhAn.timKiem(id) == null && patientIndex < dsPatient.size()) {
-            Patient p = dsPatient.get(patientIndex);
-            dsBenhAn.them(new BenhAn(id, p.getId(), ngayKham, trieuChung, p.getMedicalHistory(), chanDoan));
-        }
-    }
-
-    System.out.println("Đã thêm danh sách bệnh án mẫu (nếu chưa có).");
-}
-
-    public void inBenhAn() {
-        dsBenhAn.inDanhSach();
+    public TestBenhan(TestPatient testPatient) {
+        this.dsPatient = testPatient.getPatientList();
     }
 
     public void themBenhAn() {
-        Scanner scAdd = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
 
-        System.out.print("Nhập số lượng bệnh án muốn thêm: ");
-        int soLuong = Integer.parseInt(scAdd.nextLine());
+        System.out.print("Nhập số lượng bệnh án cần thêm: ");
+        int n = Integer.parseInt(sc.nextLine());
 
-        for (int i = 0; i < soLuong; i++) {
-            System.out.println("\n--- Nhập thông tin bệnh án thứ " + (i + 1) + " ---");
+        for (int i = 0; i < n; i++) {
+            System.out.println("\n=== Nhập thông tin bệnh án thứ " + (i + 1) + " ===");
 
             System.out.print("Mã bệnh án: ");
-            String id = scAdd.nextLine();
+            String id = sc.nextLine();
 
-            if (dsBenhAn.timKiem(id) != null) {
-                System.out.println("Mã bệnh án đã tồn tại, vui lòng nhập mã khác.");
-                i--;
-                continue;
-            }
+            System.out.print("Mã bệnh nhân: ");
+            String patientId = sc.nextLine();
 
-            System.out.print("Mã bệnh nhân liên kết: ");
-            String patientId = scAdd.nextLine();
-
-            Patient patient = dsPatient.stream()
-                .filter(p -> p.getId().equalsIgnoreCase(patientId))
-                .findFirst()
-                .orElse(null);
-
-            if (patient == null) {
-                System.out.println("Không tìm thấy bệnh nhân với ID: " + patientId);
+            Patient p = dsPatient.timKiem(patientId);
+            if (p == null) {
+                System.out.println("Không tìm thấy bệnh nhân có mã: " + patientId);
                 continue;
             }
 
@@ -81,66 +42,87 @@ public class TestBenhan {
             while (ngayKham == null) {
                 try {
                     System.out.print("Ngày khám (dd/MM/yyyy): ");
-                    Date parsedDate = sdf.parse(scAdd.nextLine().trim());
+                    Date date = sdf.parse(sc.nextLine().trim());
                     ngayKham = Calendar.getInstance();
-                    ngayKham.setTime(parsedDate);
+                    ngayKham.setTime(date);
                 } catch (Exception e) {
-                    System.out.println("Ngày không hợp lệ. Vui lòng nhập lại.");
+                    System.out.println("Ngày không hợp lệ, vui lòng nhập lại.");
                 }
             }
 
             System.out.print("Triệu chứng: ");
-            String trieuChung = scAdd.nextLine();
+            String trieuChung = sc.nextLine();
+
+            System.out.print("Tiền sử bệnh: ");
+            String tienSuBenh = sc.nextLine();
+
             System.out.print("Chẩn đoán: ");
-            String chanDoan = scAdd.nextLine();
+            String chanDoan = sc.nextLine();
 
-            dsBenhAn.them(new BenhAn(id, patientId, ngayKham, trieuChung, patient.getMedicalHistory(), chanDoan));
+            BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSuBenh, chanDoan);
+            dsBenhan.them(ba);
         }
-
-        System.out.println("\nDanh sách bệnh án sau khi thêm:");
-        dsBenhAn.inDanhSach();
     }
 
-    public void updateBenhAn() {
-        Scanner scannerEdit = new Scanner(System.in);
-        System.out.print("Nhập ID bệnh án cần sửa: ");
-        String id = scannerEdit.nextLine();
+    public void inBenhAn() {
+        dsBenhan.inDanhSach();
+    }
 
-        BenhAn benhAnCu = dsBenhAn.timKiem(id);
-        if (benhAnCu == null) {
+    public void xoaBenhAn() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập mã bệnh án cần xoá: ");
+        String id = sc.nextLine();
+
+        dsBenhan.xoa(id);
+        System.out.println("Danh sách sau khi xoá:");
+        dsBenhan.inDanhSach();
+    }
+
+    public void suaBenhAn() {
+        Scanner sc = new Scanner(System.in);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+
+        System.out.print("Nhập mã bệnh án cần sửa: ");
+        String id = sc.nextLine();
+
+        BenhAn old = dsBenhan.timKiem(id);
+        if (old == null) {
             System.out.println("Không tìm thấy bệnh án.");
             return;
         }
 
-        System.out.println("Bệnh án hiện tại:\n" + benhAnCu);
+        System.out.println("\nĐang sửa thông tin cho bệnh án mã: " + id);
 
-        System.out.print("Nhập chẩn đoán mới: ");
-        String chanDoanMoi = scannerEdit.nextLine();
+        System.out.print("Triệu chứng mới: ");
+        String trieuChung = sc.nextLine();
 
-        BenhAn benhAnMoi = new BenhAn(
-                benhAnCu.getId(),
-                benhAnCu.getPatientId(),
-                benhAnCu.getNgayKham(),
-                benhAnCu.getTrieuChung(),
-                benhAnCu.getTienSuBenh(),
-                chanDoanMoi
-        );
+        System.out.print("Tiền sử bệnh mới: ");
+        String tienSuBenh = sc.nextLine();
 
-        dsBenhAn.sua(id, benhAnMoi);
+        System.out.print("Chẩn đoán mới: ");
+        String chanDoan = sc.nextLine();
 
-        System.out.println("\nDanh sách sau khi sửa:");
-        dsBenhAn.inDanhSach();
+        Calendar ngayKham = null;
+        while (ngayKham == null) {
+            try {
+                System.out.print("Ngày khám mới (dd/MM/yyyy): ");
+                Date date = sdf.parse(sc.nextLine().trim());
+                ngayKham = Calendar.getInstance();
+                ngayKham.setTime(date);
+            } catch (Exception e) {
+                System.out.println("Ngày không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+
+        BenhAn newBA = new BenhAn(id, old.getPatientId(), ngayKham, trieuChung, tienSuBenh, chanDoan);
+        dsBenhan.sua(id, newBA);
+
+        System.out.println("\nDanh sách bệnh án sau khi sửa:");
+        dsBenhan.inDanhSach();
     }
+    public ListChung<BenhAn> getDsBenhan() {
+    return dsBenhan;
+}
 
-    public void deleteBenhAn() {
-        Scanner snrDelete = new Scanner(System.in);
-        System.out.print("Nhập ID bệnh án cần xoá: ");
-        String id = snrDelete.nextLine();
-
-        dsBenhAn.xoa(id);
-        System.out.println("Đã xoá thành công!");
-
-        System.out.println("\nDanh sách sau khi xoá:");
-        dsBenhAn.inDanhSach();
-    }
 }

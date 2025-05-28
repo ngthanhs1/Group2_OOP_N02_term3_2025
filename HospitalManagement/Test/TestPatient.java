@@ -1,5 +1,6 @@
 package HospitalManagement.Test;
 
+import HospitalManagement.BenhAn.BenhAn;
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.Patientt.Patient;
 
@@ -15,12 +16,9 @@ public class TestPatient {
         {"BN003", "Le Hoang Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp"}
     };
 
-    // Dùng cho App gọi để có danh sách
-    public ArrayList<Patient> addList() {
-        ArrayList<Patient> ds = new ArrayList<>();
-
+    public void themDanhSachMau() {
         for (Object[] row : data) {
-            ds.add(new Patient(
+            Patient p = new Patient(
                 (String) row[0],
                 (String) row[1],
                 new GregorianCalendar((int) row[2], (int) row[3], (int) row[4]),
@@ -28,18 +26,14 @@ public class TestPatient {
                 (String) row[6],
                 (String) row[7],
                 (String) row[8]
-            ));
-        }
-
-        return ds;
-    }
-
-    public void themDanhSachMau() {
-        ArrayList<Patient> ds = addList();
-        for (Patient p : ds) {
+            );
             patientList.them(p);
         }
         System.out.println("Đã thêm danh sách bệnh nhân mẫu.");
+    }
+
+    public ListChung<Patient> getPatientList() {
+        return patientList;
     }
 
     public void addPatient() {
@@ -63,9 +57,8 @@ public class TestPatient {
             while (dob == null) {
                 try {
                     System.out.print("Ngày sinh (dd/MM/yyyy): ");
-                    String[] parts = srk.nextLine().trim().split("/");
-                    Date date = sdf.parse(String.format("%02d/%02d/%s",
-                            Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), parts[2]));
+                    String input = srk.nextLine().trim();
+                    Date date = sdf.parse(input);
                     dob = Calendar.getInstance();
                     dob.setTime(date);
                 } catch (Exception e) {
@@ -125,7 +118,7 @@ public class TestPatient {
         System.out.print("Tiền sử bệnh mới: ");
         String history = snr.nextLine();
 
-        Calendar dob = old.getDob(); // giữ nguyên ngày sinh
+        Calendar dob = old.getDob();
 
         Patient newP = new Patient(id, name, dob, gender, address, phone, history);
         patientList.sua(id, newP);
@@ -144,4 +137,8 @@ public class TestPatient {
         System.out.println("\nDanh sách sau khi xóa:");
         patientList.inDanhSach();
     }
+    public ListChung<Patient> getDsPatientList() {
+        return patientList;
+}
+
 }
