@@ -62,7 +62,7 @@ public class TestPatient {
         patientList.printPatientList();
     }
 
-    public void display() {
+    public void indanhsachPatient() {
         ArrayList<Patient> list = addList();
         for (Patient p : list) {
             System.out.println(p);

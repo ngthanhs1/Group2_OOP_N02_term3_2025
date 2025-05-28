@@ -1,81 +1,64 @@
 package HospitalManagement.BenhAn;
 
+import HospitalManagement.Patientt.Patient;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class BenhAn {
-    private String id;
-    private String chuandoan;
-    private Calendar dob;
-    private String tsb;
-    private String trieuchung;
-    private String mbn;
+    private String id;            
+    private Patient patient;
+    private Calendar ngayLap;
+    private String trieuChung;
+    private String tienSuBenh;
+    private String chanDoan;
 
-    public BenhAn(String id, String chuandoan, Calendar dob, String tsb, String trieuchung, String mbn) {
+    public BenhAn(String id, Patient patient, Calendar ngayLap, String trieuChung, String tienSuBenh, String chanDoan) {
         this.id = id;
-        this.chuandoan = chuandoan;
-        this.dob = dob;
-        this.tsb = tsb;
-        this.trieuchung = trieuchung;
-        this.mbn = mbn;
+        this.patient = patient;
+        this.ngayLap = ngayLap;
+        this.trieuChung = trieuChung;
+        this.tienSuBenh = tienSuBenh;
+        this.chanDoan = chanDoan;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public String getChuandoan() {
-        return chuandoan;
+    public Calendar getNgayLap() {
+        return ngayLap;
     }
 
-    public void setChuandoan(String chuandoan) {
-        this.chuandoan = chuandoan;
+    public String getTrieuChung() {
+        return trieuChung;
     }
 
-    public Calendar getDob() {
-        return dob;
+    public String getTienSuBenh() {
+        return tienSuBenh;
     }
 
-    public void setDob(Calendar dob) {
-        this.dob = dob;
+    public String getChanDoan() {
+        return chanDoan;
     }
 
-    public String getTsb() {
-        return tsb;
-    }
-
-    public void setTsb(String tsb) {
-        this.tsb = tsb;
-    }
-
-    public String getTrieuchung() {
-        return trieuchung;
-    }
-
-    public void setTrieuchung(String trieuchung) {
-        this.trieuchung = trieuchung;
-    }
-
-    public String getMbn() {
-        return mbn;
-    }
-
-    public void setMbn(String mbn) {
-        this.mbn = mbn;
+    public void setChanDoan(String chanDoan) {
+        this.chanDoan = chanDoan;
     }
 
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return "Mã bệnh án: " + id + "\n"
-                + "Mã bệnh nhân: " + mbn + "\n"
-                + "Ngày lập bệnh án: " + sdf.format(dob.getTime()) + "\n"
-                + "Triệu chứng: " + trieuchung + "\n"
-                + "Tiền sử bệnh: " + tsb + "\n"
-                + "Chẩn đoán: " + chuandoan + "\n";
+        return  "----- BỆNH ÁN -----\n" +
+                "Mã bệnh án: " + id + "\n" +
+                "Ngày lập: " + sdf.format(ngayLap.getTime()) + "\n" +
+                "Triệu chứng: " + trieuChung + "\n" +
+                "Tiền sử bệnh: " + tienSuBenh + "\n" +
+                "Chẩn đoán: " + chanDoan + "\n" +
+                patient.toString() +
+                "-------------------\n";
     }
 }

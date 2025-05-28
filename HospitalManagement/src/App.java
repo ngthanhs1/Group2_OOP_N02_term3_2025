@@ -6,14 +6,17 @@ import HospitalManagement.Test.TestPatient;
 public class App {
   public static void main(String[] args) throws Exception {
   System.out.println("chao ca nha iu<>");
+  System.out.println();
 
   // TestPatient tpt = new TestPatient();
   // tpt.addPatientByInput();
-  // tpt.display();
+  // tpt.indanhsachPatient();
 
-  TestBenhan tba = new TestBenhan();
-  tba.addBenhanByInput();
-  tba.inDanhSachBenhAn();
+  // TestBenhan tba = new TestBenhan();
+  // tba.taoBenhAnMau();
+  // tba.inDanhSachBenhAn();
+  // tba.testSuaBenhAn();
+  // tba.inDanhSachBenhAn();
 
   }
 
