@@ -8,16 +8,17 @@ public class App {
     System.out.println("chao ca nha iu<>");
     System.out.println();
 
-//  TestPatient tpt = new TestPatient();
-//   pt.themDanhSachMau();
-//  tpt.addPatient();
-//  tpt.inPatient();
+    TestPatient tpt = new TestPatient();
+    tpt.themDanhSachMau();
+    tpt.addPatient();
+    tpt.inPatient();
 
-    TestBenhan tba = new TestBenhan();
-    tba.addBenhAn();
-    tba.deleteBenhAn();
-    tba.inBenhAn();
-    
+    // TestBenhan tba = new TestBenhan();
+    // tba.addBenhAn();
+    // tba.inBenhAn();
+    // tba.updateBenhAn();
+    // tba.inBenhAn();
+
 //   TestSchedule tse = new TestSchedule();
 //   tse.khoitaoBAPT();
 //   tse.inDanhSachSchedule();
