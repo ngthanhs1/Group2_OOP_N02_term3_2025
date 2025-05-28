@@ -20,8 +20,12 @@ public class App {
   // tba.inDanhSachBenhAn();
 
   TestSchedule tse = new TestSchedule();
-  tse.khoiTaoMau();
-  tse.hienThi();
+  tse.khoitaoBAPT();
+  tse.inDanhSachSchedule();
+  tse.timKiem();
+  tse.xoaSchedule();
+  tse.inDanhSachSchedule();
+
 
 
   }
