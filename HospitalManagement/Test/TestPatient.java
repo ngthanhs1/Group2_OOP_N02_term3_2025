@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestPatient {
-    private ListChung<Patient> patientList = new ListChung<>();
+    private static final ListChung<Patient> patientList = new ListChung<>();
 
     private static final Object[][] data = {
         {"BN001", "Nguyen Thi Lan", 1995, Calendar.MARCH, 10, "Nữ", "Hà Nội", "0123456789", "Không có tiền sử bệnh"},
@@ -49,6 +49,10 @@ public class TestPatient {
 
             System.out.print("Mã bệnh nhân: ");
             String id = srk.nextLine();
+            if (patientList.tonTai(id)) {
+                System.out.println("Mã bệnh nhân đã tồn tại. Bỏ qua.");
+                continue;
+            }
 
             System.out.print("Họ tên: ");
             String name = srk.nextLine();
@@ -137,8 +141,27 @@ public class TestPatient {
         System.out.println("\nDanh sách sau khi xóa:");
         patientList.inDanhSach();
     }
-    public ListChung<Patient> getDsPatientList() {
-        return patientList;
-}
 
+    public void timKiemPatient() {
+        Scanner snr = new Scanner(System.in);
+        System.out.print("Nhập ID bệnh nhân cần tìm: ");
+        String id = snr.nextLine();
+
+        Patient p = patientList.timKiem(id);
+        if (p == null) {
+            System.out.println("Không tìm thấy bệnh nhân.");
+        } else {
+            System.out.println("Thông tin bệnh nhân:");
+            System.out.println(p);
+        }
+    }
+
+    public void thongKeSoLuong() {
+        System.out.println("Tổng số bệnh nhân: " + patientList.getList().size());
+    }
+
+    // Dùng trong bước tạo bệnh án/schedule: kiểm tra ID tồn tại
+    public static boolean checkTonTaiBenhNhan(String id) {
+        return patientList.tonTai(id);
+    }
 }

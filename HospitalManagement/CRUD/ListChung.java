@@ -6,6 +6,10 @@ public class ListChung<T extends CoId> {
     private ArrayList<T> danhSach = new ArrayList<>();
 
     public void them(T obj) {
+        if (timKiem(obj.getId()) != null) {
+            System.out.println("ID đã tồn tại, không thể thêm.");
+            return;
+        }
         danhSach.add(obj);
         System.out.println("Đã thêm thành công!");
     }
@@ -41,6 +45,16 @@ public class ListChung<T extends CoId> {
         return null;
     }
 
+    public ArrayList<T> timKiemNhieuTheoIdLienKet(String foreignKey) {
+        ArrayList<T> ketQua = new ArrayList<>();
+        for (T obj : danhSach) {
+            if (obj.getId().equalsIgnoreCase(foreignKey)) {
+                ketQua.add(obj);
+            }
+        }
+        return ketQua;
+    }
+
     public void inDanhSach() {
         if (danhSach.isEmpty()) {
             System.out.println("Danh sách rỗng.");
@@ -53,5 +67,9 @@ public class ListChung<T extends CoId> {
 
     public ArrayList<T> getList() {
         return danhSach;
+    }
+
+    public boolean tonTai(String id) {
+        return timKiem(id) != null;
     }
 }
