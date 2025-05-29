@@ -11,7 +11,7 @@ public class TestPatient {
     private static final ListChung<Patient> patientList = new ListChung<>();
 
     private static final Object[][] data = {
-        {"BN001", "Nguyen Thi Lan", 1995, Calendar.MARCH, 10, "Nữ", "Hà Nội", "0123456789", "Không có tiền sử bệnh"},
+        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.SHORT, 19, "Nam", "Hà Nội", "0123456789", "Suy tinh thể"},
         {"BN002", "Tran Van Nam", 1999, Calendar.APRIL, 5, "Nam", "Hải Phòng", "0987654321", "Tiểu đường"},
         {"BN003", "Le Hoang Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp"}
     };
@@ -25,11 +25,10 @@ public class TestPatient {
                 (String) row[5],
                 (String) row[6],
                 (String) row[7],
-                (String) row[8]
-            );
+                (String) row[8]);
             patientList.them(p);
         }
-        System.out.println("Đã thêm danh sách bệnh nhân mẫu.");
+        System.out.println("__Danh sach bệnh nhân mẫu__");
     }
 
     public ListChung<Patient> getPatientList() {
@@ -91,6 +90,8 @@ public class TestPatient {
     }
 
     public void inPatient() {
+         System.out.printf("%-10s | %-20s | %-12s | %-6s | %-15s | %-11s | %-20s\n","Mã BN", "Họ tên", "Ngày sinh", "Giới", "Địa chỉ", "SĐT", "Tiền sử bệnh");
+        System.out.println("---------------------------------------------------------------------------------------------------");
         patientList.inDanhSach();
     }
 

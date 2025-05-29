@@ -14,7 +14,7 @@ public class TestSchedule {
     private ListChung<BenhAn> dsBenhan;
 
     public TestSchedule(TestPatient testPatient, TestBenhan testBenhan) {
-        this.dsPatient = testPatient.getDsPatientList();
+        this.dsPatient = testPatient.getPatientList();
         this.dsBenhan = testBenhan.getDsBenhan();
     }
 
@@ -26,11 +26,15 @@ public class TestSchedule {
         System.out.print("Nhập số lượng lịch cấp thuốc cần thêm: ");
         int n = Integer.parseInt(sc.nextLine());
 
-        for (int i = 0; i < n; i++) {
-            System.out.println("\nNhập thông tin lịch cấp thuốc thứ " + (i + 1) + " ===");
+        for (int i = 0; i < n; ) {
+            System.out.println("\n=== Nhập thông tin lịch cấp thuốc thứ " + (i + 1) + " ===");
 
             System.out.print("Mã schedule: ");
             String id = sc.nextLine();
+            if (dsSchedule.timKiem(id) != null) {
+                System.out.println("Mã schedule đã tồn tại. Vui lòng nhập mã khác.");
+                continue;
+            }
 
             System.out.print("Mã bệnh án: ");
             String benhanId = sc.nextLine();
@@ -42,7 +46,7 @@ public class TestSchedule {
             System.out.print("Mã bệnh nhân: ");
             String patientId = sc.nextLine();
             if (dsPatient.timKiem(patientId) == null) {
-                System.out.println("Không tìm thấy bệnh nhân có mã: " + patientId);
+                System.out.println("Hông tìm thấy bệnh nhân có mã: " + patientId);
                 continue;
             }
 
@@ -66,12 +70,15 @@ public class TestSchedule {
 
             Schedule s = new Schedule(id, benhanId, patientId, date, tenthuoc, soluong);
             dsSchedule.them(s);
-            System.out.println("Đã thêm thành công!\n");
+            System.out.println("Đã thêm lịch cấp thuốc thành công!");
+            i++; // chỉ tăng nếu thêm thành công
         }
     }
 
     public void inSchedule() {
-        System.out.println("\nDanh sách lịch cấp thuốc:");
+        System.out.println("\n--- Danh sách lịch cấp thuốc ---");
+        System.out.printf("%-8s | %-8s | %-8s | %-12s | %-12s | %-8s\n","Mã BT", "Mã BA", "Mã BN", "Ngày cấp", "Tên thuốc", "Số lượng(viên)");
+        System.out.println("-----------------------------------------------------------------------------------");
         dsSchedule.inDanhSach();
     }
 
@@ -80,10 +87,14 @@ public class TestSchedule {
         System.out.print("Nhập mã schedule cần xoá: ");
         String id = sc.nextLine();
 
-        dsSchedule.xoa(id);
-
-        System.out.println("Danh sách sau khi xoá:");
-        dsSchedule.inDanhSach();
+        Schedule s = dsSchedule.timKiem(id);
+        if (s == null) {
+            System.out.println("Không tìm thấy lịch cấp thuốc.");
+        } else {
+            dsSchedule.xoa(id);
+            System.out.println("Đã xoá thành công. Danh sách hiện tại:");
+            dsSchedule.inDanhSach();
+        }
     }
 
     public void suaSchedule() {
@@ -100,7 +111,7 @@ public class TestSchedule {
             return;
         }
 
-        System.out.println("\nDang sửa thông tin cho schedule mã: " + id);
+        System.out.println("\n=== Đang sửa thông tin cho schedule mã: " + id + " ===");
 
         Calendar date = null;
         while (date == null) {
@@ -123,7 +134,7 @@ public class TestSchedule {
         Schedule newS = new Schedule(id, old.getBenhanId(), old.getPatientId(), date, tenthuoc, soluong);
         dsSchedule.sua(id, newS);
 
-        System.out.println("\nDanh sách schedule sau khi sửa:");
+        System.out.println("Đã cập nhật thành công. Danh sách sau khi sửa:");
         dsSchedule.inDanhSach();
     }
 

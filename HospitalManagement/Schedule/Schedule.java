@@ -60,17 +60,10 @@ public class Schedule implements CoId{
     }
     @Override
     public String toString() {
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    String dateStr = (date != null) ? sdf.format(date.getTime()) : "null";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dateStr = (date != null) ? sdf.format(date.getTime()) : "null";
+            return String.format("%-10s | %-10s | %-10s | %-12s | %-20s | %-8s",id, benhanId, patientId, dateStr, tenthuoc, soluong);
+    }
 
-    return "Schedule: " +
-            "id='" + id + '\'' +
-            ", benhanId='" + benhanId + '\'' +
-            ", patientId='" + patientId + '\'' +
-            ", date=" + dateStr +
-            ", tenthuoc='" + tenthuoc + '\'' +
-            ", soluong='" + soluong + '\'' +
-            ' ';
-}
     
 }

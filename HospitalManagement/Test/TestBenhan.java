@@ -29,12 +29,19 @@ public class TestBenhan {
             System.out.print("Mã bệnh án: ");
             String id = sc.nextLine();
 
+            if (dsBenhan.timKiem(id) != null) {
+                System.out.println("Mã bệnh án đã tồn tại. Vui lòng nhập mã khác.");
+                i--; // Giữ nguyên chỉ số để nhập lại bệnh án này
+                continue;
+            }
+
             System.out.print("Mã bệnh nhân: ");
             String patientId = sc.nextLine();
 
             Patient p = dsPatient.timKiem(patientId);
             if (p == null) {
                 System.out.println("Không tìm thấy bệnh nhân có mã: " + patientId);
+                i--; // Cho nhập lại bệnh án này
                 continue;
             }
 
@@ -73,9 +80,14 @@ public class TestBenhan {
         System.out.print("Nhập mã bệnh án cần xoá: ");
         String id = sc.nextLine();
 
-        dsBenhan.xoa(id);
-        System.out.println("Danh sách sau khi xoá:");
-        dsBenhan.inDanhSach();
+        BenhAn old = dsBenhan.timKiem(id);
+        if (old == null) {
+            System.out.println("Không tìm thấy bệnh án.");
+        } else {
+            dsBenhan.xoa(id);
+            System.out.println("Đã xoá thành công. Danh sách hiện tại:");
+            dsBenhan.inDanhSach();
+        }
     }
 
     public void suaBenhAn() {
@@ -94,15 +106,6 @@ public class TestBenhan {
 
         System.out.println("\nĐang sửa thông tin cho bệnh án mã: " + id);
 
-        System.out.print("Triệu chứng mới: ");
-        String trieuChung = sc.nextLine();
-
-        System.out.print("Tiền sử bệnh mới: ");
-        String tienSuBenh = sc.nextLine();
-
-        System.out.print("Chẩn đoán mới: ");
-        String chanDoan = sc.nextLine();
-
         Calendar ngayKham = null;
         while (ngayKham == null) {
             try {
@@ -115,14 +118,23 @@ public class TestBenhan {
             }
         }
 
+        System.out.print("Triệu chứng mới: ");
+        String trieuChung = sc.nextLine();
+
+        System.out.print("Tiền sử bệnh mới: ");
+        String tienSuBenh = sc.nextLine();
+
+        System.out.print("Chẩn đoán mới: ");
+        String chanDoan = sc.nextLine();
+
         BenhAn newBA = new BenhAn(id, old.getPatientId(), ngayKham, trieuChung, tienSuBenh, chanDoan);
         dsBenhan.sua(id, newBA);
 
         System.out.println("\nDanh sách bệnh án sau khi sửa:");
         dsBenhan.inDanhSach();
     }
-    public ListChung<BenhAn> getDsBenhan() {
-    return dsBenhan;
-}
 
+    public ListChung<BenhAn> getDsBenhan() {
+        return dsBenhan;
+    }
 }

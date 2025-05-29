@@ -78,12 +78,8 @@ public class Patient implements CoId{
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return "Mã bệnh nhân: " + id + "\n"
-                + "Họ tên: " + name + "\n"
-                + "Ngày sinh: " + sdf.format(dob.getTime()) + "\n"
-                + "Giới tính: " + gender + "\n"
-                + "Địa chỉ: " + address + "\n"
-                + "SĐT: " + phone + "\n"
-                + "Tiền sử bệnh: " + medicalHistory + "\n";
+            return String.format("%-10s | %-20s | %-12s | %-6s | %-15s | %-11s | %-20s",id,name,sdf.format(dob.getTime()),gender,address,phone,medicalHistory);
     }
+
+
 }
