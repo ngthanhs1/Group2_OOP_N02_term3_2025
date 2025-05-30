@@ -31,7 +31,7 @@ public class TestBenhan {
 
             if (dsBenhan.timKiem(id) != null) {
                 System.out.println("Mã bệnh án đã tồn tại. Vui lòng nhập mã khác.");
-                i--; // Giữ nguyên chỉ số để nhập lại bệnh án này
+                i--;
                 continue;
             }
 
@@ -41,7 +41,7 @@ public class TestBenhan {
             Patient p = dsPatient.timKiem(patientId);
             if (p == null) {
                 System.out.println("Không tìm thấy bệnh nhân có mã: " + patientId);
-                i--; // Cho nhập lại bệnh án này
+                i--;
                 continue;
             }
 

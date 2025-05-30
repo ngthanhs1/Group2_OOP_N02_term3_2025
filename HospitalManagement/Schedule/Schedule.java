@@ -62,7 +62,7 @@ public class Schedule implements CoId{
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String dateStr = (date != null) ? sdf.format(date.getTime()) : "null";
-            return String.format("%-10s | %-10s | %-10s | %-12s | %-20s | %-8s",id, benhanId, patientId, dateStr, tenthuoc, soluong);
+            return String.format("%-8s | %-8s | %-8s | %-15s | %-10s | %-13s",id, benhanId, patientId, dateStr, tenthuoc, soluong);
     }
 
     

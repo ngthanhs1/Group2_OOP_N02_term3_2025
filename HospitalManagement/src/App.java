@@ -23,8 +23,10 @@ public class App {
     TestPatient tpt = new TestPatient();
     tpt.themDanhSachMau();
     tpt.inPatient();
+    tpt.timKiemPatient();
     TestBenhan tbn = new TestBenhan(tpt);
     tbn.themBenhAn();
+    tbn.inBenhAn();
     TestSchedule tse = new TestSchedule(tpt, tbn);
     tse.themSchedule();
     tse.inSchedule();
