@@ -13,10 +13,8 @@ public class InPatientTrongNgay{
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
-
         System.out.print("Nhập ngày cần tra cứu bệnh nhân (dd/MM/yyyy): ");
         String inputDate = sc.nextLine();
-
         Calendar targetDate = null;
         try {
             Date parsedDate = sdf.parse(inputDate.trim());

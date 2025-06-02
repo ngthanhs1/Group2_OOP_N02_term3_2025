@@ -107,12 +107,24 @@ public class BenhAn implements CoId, LinkBenhAn {
         return doctorList;
     }
 
+    private String getDoctorNameById(String id) {
+        if (doctorList != null) {
+            for (Doctor d : doctorList) {
+                if (d.getId().equals(id)) {
+                    return d.getName();
+                }
+            }
+        }
+        return "(Không rõ bác sĩ)";
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return String.format(
-            "Mã BA: %s | Mã BN: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s | Mã bác sĩ: %s | Mã phòng: %s",
-            id, patientId, sdf.format(ngayKham.getTime()), trieuChung, tienSuBenh, chanDoan, doctorId, roomId
+        "Mã BA: %s | Mã BN: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s | Bác sĩ: %s | Mã phòng: %s",
+            id, patientId, sdf.format(ngayKham.getTime()), trieuChung, tienSuBenh, chanDoan, getDoctorNameById(doctorId), roomId
         );
     }
+
 }

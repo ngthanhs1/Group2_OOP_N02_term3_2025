@@ -7,13 +7,13 @@ public class ListChung<T extends CoId> {
     private boolean daThemMau = false;
 
     public void them(T obj) {
-        if (timKiem(obj.getId()) != null) {
-            System.out.println("ID đã tồn tạii.");
-            return;
-        }
-        danhSach.add(obj);
-        System.out.println("Đã thêm thành công!");
+    if (timKiem(obj.getId()) != null) {
+        System.out.println("Không thể thêm ID: '" + obj.getId() + "' đã tồn tại.");
+        return;
     }
+    danhSach.add(obj);
+    System.out.println("Đã thêm thành công có ID: " + obj.getId());
+}
 
     public void sua(String id, T objMoi) {
         for (int i = 0; i < danhSach.size(); i++) {

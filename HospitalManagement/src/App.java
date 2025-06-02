@@ -29,6 +29,7 @@ public class App {
     // tpt.timKiemPatient();
     TestBenhan tba = new TestBenhan();
     tba.themBenhan();
+    tba.inBenhan();
     
   }
 }
