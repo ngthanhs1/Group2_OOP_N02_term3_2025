@@ -1,49 +1,72 @@
 package HospitalManagement.Patientt;
 
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 import HospitalManagement.CRUD.CoId;
 
-import java.text.SimpleDateFormat;
-
-public class Patient implements CoId{
+public class Patient implements CoId {
     private String id;
     private String name;
     private Calendar dob;
+    private int age;
     private String gender;
     private String address;
     private String phone;
     private String medicalHistory;
 
-    
     public Patient(String id, String name, Calendar dob, String gender, String address, String phone,
-            String medicalHistory) {
+                   String medicalHistory) {
         this.id = id;
         this.name = name;
-        this.dob = dob;
+        setDob(dob); // sẽ tự tính tuổi khi set DOB
         this.gender = gender;
         this.address = address;
         this.phone = phone;
         this.medicalHistory = medicalHistory;
     }
+
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Calendar getDob() {
         return dob;
     }
+
     public void setDob(Calendar dob) {
         this.dob = dob;
+        this.age = calculateAge(dob);
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    private int calculateAge(Calendar dob) {
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        // Nếu tháng hiện tại nhỏ hơn tháng sinh hoặc cùng tháng nhưng chưa đến ngày thì trừ đi 1
+        if (now.get(Calendar.MONTH) < dob.get(Calendar.MONTH) || 
+            (now.get(Calendar.MONTH) == dob.get(Calendar.MONTH) && now.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH))) {
+            year--;
+        }
+        return year;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -51,6 +74,7 @@ public class Patient implements CoId{
     public void setGender(String gender) {
         this.gender = gender;
     }
+
     public String getAddress() {
         return address;
     }
@@ -78,8 +102,8 @@ public class Patient implements CoId{
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            return String.format("%-10s | %-20s | %-12s | %-6s | %-15s | %-11s | %-20s",id,name,sdf.format(dob.getTime()),gender,address,phone,medicalHistory);
+        String dobStr = (dob != null) ? sdf.format(dob.getTime()) : "N/A";
+        return String.format("%-10s | %-20s | %-12s | %-3d | %-6s | %-15s | %-11s | %-20s",
+                id, name, dobStr, age, gender, address, phone, medicalHistory);
     }
-
-
 }

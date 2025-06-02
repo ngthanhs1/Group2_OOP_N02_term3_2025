@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class ListChung<T extends CoId> {
     private ArrayList<T> danhSach = new ArrayList<>();
+    private boolean daThemMau = false;
 
     public void them(T obj) {
         if (timKiem(obj.getId()) != null) {
-            System.out.println("ID đã tồn tại, không thể thêm.");
+            System.out.println("ID đã tồn tạii.");
             return;
         }
         danhSach.add(obj);
@@ -25,15 +26,16 @@ public class ListChung<T extends CoId> {
         System.out.println("Không tìm thấy đối tượng có ID: " + id);
     }
 
-    public void xoa(String id) {
+    public boolean xoa(String id) {
         for (int i = 0; i < danhSach.size(); i++) {
             if (danhSach.get(i).getId().equalsIgnoreCase(id)) {
                 danhSach.remove(i);
                 System.out.println("Đã xóa thành công!");
-                return;
+                return true;
             }
         }
         System.out.println("Không tìm thấy đối tượng có ID: " + id);
+        return false;
     }
 
     public T timKiem(String id) {
@@ -72,4 +74,26 @@ public class ListChung<T extends CoId> {
     public boolean tonTai(String id) {
         return timKiem(id) != null;
     }
+
+    public boolean isDaThemMau() {
+        return daThemMau;
+    }
+
+    public void setDaThemMau(boolean daThemMau) {
+        this.daThemMau = daThemMau;
+    }
+    public void addList(ArrayList<T> ds) {
+    if (daThemMau) {
+        System.out.println("Danh sách mẫu đã được thêm.");
+        return;
+    }
+    for (T obj : ds) {
+        if (timKiem(obj.getId()) == null) {
+            danhSach.add(obj);
+        }
+    }
+    daThemMau = true;
+    System.out.println("Đã thêm danh sách mẫu thành công!");
+}
+
 }

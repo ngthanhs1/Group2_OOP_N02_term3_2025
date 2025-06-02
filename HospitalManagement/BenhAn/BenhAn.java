@@ -1,31 +1,44 @@
 package HospitalManagement.BenhAn;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import HospitalManagement.CRUD.CoId;
+import HospitalManagement.CRUD.LinkBenhAn;
+import HospitalManagement.Room.Doctor;
 
-public class BenhAn implements CoId{
+public class BenhAn implements CoId, LinkBenhAn {
     private String id;
     private String patientId;
     private Calendar ngayKham;
     private String trieuChung;
     private String tienSuBenh;
     private String chanDoan;
+    private String doctorId;
+    private String roomId;
+
+    private static List<Doctor> doctorList;
 
     public BenhAn(String id, String patientId, Calendar ngayKham,
-                  String trieuChung, String tienSuBenh, String chanDoan) {
+                  String trieuChung, String tienSuBenh, String chanDoan,
+                  String doctorId, String roomId) {
         this.id = id;
         this.patientId = patientId;
         this.ngayKham = ngayKham;
         this.trieuChung = trieuChung;
         this.tienSuBenh = tienSuBenh;
         this.chanDoan = chanDoan;
+        this.doctorId = doctorId;
+        this.roomId = roomId;
     }
-    
+
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
@@ -70,9 +83,36 @@ public class BenhAn implements CoId{
         this.chanDoan = chanDoan;
     }
 
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public static void setDoctorList(List<Doctor> list) {
+        doctorList = list;
+    }
+
+    public static List<Doctor> getDoctorList() {
+        return doctorList;
+    }
+
     @Override
     public String toString() {
-        return String.format("Mã bệnh án: %s | Mã bệnh nhân: %s | Ngày khám: %tF | Triệu chứng: %s | Tiền sử: %s | Chẩn đoán: %s",
-                id, patientId, ngayKham, trieuChung, tienSuBenh, chanDoan);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return String.format(
+            "Mã BA: %s | Mã BN: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s | Mã bác sĩ: %s | Mã phòng: %s",
+            id, patientId, sdf.format(ngayKham.getTime()), trieuChung, tienSuBenh, chanDoan, doctorId, roomId
+        );
     }
 }

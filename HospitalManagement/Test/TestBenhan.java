@@ -1,140 +1,125 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.BenhAn.BenhAn;
+import HospitalManagement.Room.Doctor;
+import HospitalManagement.Room.Room;
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Patientt.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestBenhan {
-    private ListChung<BenhAn> dsBenhan = new ListChung<>();
-    private ListChung<Patient> dsPatient;
+    private static final Scanner sc = new Scanner(System.in);
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private static final ListChung<BenhAn> dsBenhan = new ListChung<>();
 
-    public TestBenhan(TestPatient testPatient) {
-        this.dsPatient = testPatient.getPatientList();
+    private static final TestDoctor testDoctor = new TestDoctor();
+    private static final TestRoom testRoom = new TestRoom();
+    private static final TestPatient testPatient = new TestPatient();
+
+    static {
+        sdf.setLenient(false);
+        testDoctor.dsMauDoctor();    // Danh sách bác sĩ mẫu
+        testRoom.dsMauRoom();      // Danh sách phòng khám mẫu
+        testPatient.dsMauPatient();   // Danh sách bệnh nhân mẫu
     }
 
-    public void themBenhAn() {
-        Scanner sc = new Scanner(System.in);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
-
+    public void themBenhan() {
         System.out.print("Nhập số lượng bệnh án cần thêm: ");
-        int n = Integer.parseInt(sc.nextLine());
-
-        for (int i = 0; i < n; i++) {
-            System.out.println("\n=== Nhập thông tin bệnh án thứ " + (i + 1) + " ===");
-
-            System.out.print("Mã bệnh án: ");
-            String id = sc.nextLine();
-
-            if (dsBenhan.timKiem(id) != null) {
-                System.out.println("Mã bệnh án đã tồn tại. Vui lòng nhập mã khác.");
-                i--;
-                continue;
-            }
-
-            System.out.print("Mã bệnh nhân: ");
-            String patientId = sc.nextLine();
-
-            Patient p = dsPatient.timKiem(patientId);
-            if (p == null) {
-                System.out.println("Không tìm thấy bệnh nhân có mã: " + patientId);
-                i--;
-                continue;
-            }
-
-            Calendar ngayKham = null;
-            while (ngayKham == null) {
-                try {
-                    System.out.print("Ngày khám (dd/MM/yyyy): ");
-                    Date date = sdf.parse(sc.nextLine().trim());
-                    ngayKham = Calendar.getInstance();
-                    ngayKham.setTime(date);
-                } catch (Exception e) {
-                    System.out.println("Ngày không hợp lệ, vui lòng nhập lại.");
-                }
-            }
-
-            System.out.print("Triệu chứng: ");
-            String trieuChung = sc.nextLine();
-
-            System.out.print("Tiền sử bệnh: ");
-            String tienSuBenh = sc.nextLine();
-
-            System.out.print("Chẩn đoán: ");
-            String chanDoan = sc.nextLine();
-
-            BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSuBenh, chanDoan);
-            dsBenhan.them(ba);
-        }
-    }
-
-    public void inBenhAn() {
-        dsBenhan.inDanhSach();
-    }
-
-    public void xoaBenhAn() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập mã bệnh án cần xoá: ");
-        String id = sc.nextLine();
-
-        BenhAn old = dsBenhan.timKiem(id);
-        if (old == null) {
-            System.out.println("Không tìm thấy bệnh án.");
-        } else {
-            dsBenhan.xoa(id);
-            System.out.println("Đã xoá thành công. Danh sách hiện tại:");
-            dsBenhan.inDanhSach();
-        }
-    }
-
-    public void suaBenhAn() {
-        Scanner sc = new Scanner(System.in);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf.setLenient(false);
-
-        System.out.print("Nhập mã bệnh án cần sửa: ");
-        String id = sc.nextLine();
-
-        BenhAn old = dsBenhan.timKiem(id);
-        if (old == null) {
-            System.out.println("Không tìm thấy bệnh án.");
+        int soLuong;
+        try {
+            soLuong = Integer.parseInt(sc.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Số lượng không hợp lệ.");
             return;
         }
 
-        System.out.println("\nĐang sửa thông tin cho bệnh án mã: " + id);
+        for (int i = 0; i < soLuong; i++) {
+            System.out.println("\n--- Nhập thông tin bệnh án thứ " + (i + 1) + " ---");
 
-        Calendar ngayKham = null;
-        while (ngayKham == null) {
+            System.out.print("Nhập mã bệnh án: ");
+            String id = sc.nextLine().trim();
+            if (dsBenhan.timKiem(id) != null) {
+                System.out.println("ID đã tồn tại, không thể thêm.");
+                continue;
+            }
+
+            testPatient.inPatient();
+            System.out.print("Nhập mã bệnh nhân: ");
+            String patientId = sc.nextLine().trim();
+            if (testPatient.getPatientList().timKiem(patientId) == null) {
+                System.out.println("Không tìm thấy bệnh nhân.");
+                continue;
+            }
+
+            System.out.print("Nhập ngày khám (dd/MM/yyyy): ");
+            Calendar ngayKham = Calendar.getInstance();
             try {
-                System.out.print("Ngày khám mới (dd/MM/yyyy): ");
                 Date date = sdf.parse(sc.nextLine().trim());
-                ngayKham = Calendar.getInstance();
                 ngayKham.setTime(date);
             } catch (Exception e) {
-                System.out.println("Ngày không hợp lệ, vui lòng nhập lại.");
+                System.out.println("Ngày không hợp lệ.");
+                continue;
             }
+
+            System.out.print("Nhập triệu chứng: ");
+            String trieuChung = sc.nextLine().trim();
+
+            System.out.print("Nhập tiền sử bệnh: ");
+            String tienSu = sc.nextLine().trim();
+
+            System.out.print("Nhập chẩn đoán: ");
+            String chanDoan = sc.nextLine().trim();
+
+            testDoctor.hienThiDanhSach();
+            System.out.print("Nhập mã bác sĩ: ");
+            String doctorId = sc.nextLine().trim();
+            if (testDoctor.getDoctorList().timKiem(doctorId) == null) {
+                System.out.println("Không tìm thấy bác sĩ.");
+                continue;
+            }
+
+            testRoom.hienThiDanhSach();
+            System.out.print("Nhập mã phòng khám: ");
+            String roomId = sc.nextLine().trim();
+            if (testRoom.getRoomList().timKiem(roomId) == null) {
+                System.out.println("Không tìm thấy phòng.");
+                continue;
+            }
+
+            BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSu, chanDoan, doctorId, roomId);
+            dsBenhan.them(ba);
+            System.out.println("Đã thêm bệnh án thành công.");
         }
-
-        System.out.print("Triệu chứng mới: ");
-        String trieuChung = sc.nextLine();
-
-        System.out.print("Tiền sử bệnh mới: ");
-        String tienSuBenh = sc.nextLine();
-
-        System.out.print("Chẩn đoán mới: ");
-        String chanDoan = sc.nextLine();
-
-        BenhAn newBA = new BenhAn(id, old.getPatientId(), ngayKham, trieuChung, tienSuBenh, chanDoan);
-        dsBenhan.sua(id, newBA);
-
-        System.out.println("\nDanh sách bệnh án sau khi sửa:");
-        dsBenhan.inDanhSach();
     }
 
-    public ListChung<BenhAn> getDsBenhan() {
+    public void inBenhan() {
+        System.out.println("=== DANH SÁCH BỆNH ÁN ===");
+        for (BenhAn ba : dsBenhan.getList()) {
+            System.out.println(ba);
+        }
+    }
+
+    public ListChung<BenhAn> getBenhanList() {
         return dsBenhan;
     }
+
+    public void dsMauBenhAn() {
+    ArrayList<BenhAn> dsMau = new ArrayList<>();
+
+    try {
+        Calendar ngay1 = Calendar.getInstance();
+        Calendar ngay2 = Calendar.getInstance();
+        ngay1.setTime(sdf.parse("01/06/2024"));
+        ngay2.setTime(sdf.parse("05/06/2024"));
+
+        dsMau.add(new BenhAn("BA01", "BN01", ngay1, "Sốt nhẹ", "Không rõ", "Cảm lạnh", "BS01", "P01"));
+        dsMau.add(new BenhAn("BA02", "BN02", ngay2, "Ho", "Hen suyễn", "Viêm họng", "BS02", "P02"));
+    } catch (Exception e) {
+        System.out.println("Lỗi định dạng ngày!");
+    }
+
+    dsBenhan.addList(dsMau);
+}
+
 }

@@ -3,32 +3,41 @@ package HospitalManagement.Test;
 import HospitalManagement.BenhAn.BenhAn;
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.Patientt.Patient;
+import HospitalManagement.ChucNang.PatientSearch;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestPatient {
     private static final ListChung<Patient> patientList = new ListChung<>();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static boolean daThemMau = false;
 
     private static final Object[][] data = {
-        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.SHORT, 19, "Nam", "Hà Nội", "0123456789", "Suy tinh thể"},
-        {"BN002", "Tran Van Nam", 1999, Calendar.APRIL, 5, "Nam", "Hải Phòng", "0987654321", "Tiểu đường"},
-        {"BN003", "Le Hoang Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp"}
+        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.MARCH, 19, "Nam", "Hà Nội", "0123456789", "Suy tinh thể"},
+        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nữ", "Vĩnh Phúc", "0987654321", "Tiểu đường"},
+        {"BN003", "Lê Hoàng Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp"}
     };
 
-    public void themDanhSachMau() {
+    public void dsMauPatient() {
+        if (daThemMau) return;
+
         for (Object[] row : data) {
+            Calendar dob = new GregorianCalendar((int) row[2], (int) row[3], (int) row[4]);
             Patient p = new Patient(
                 (String) row[0],
                 (String) row[1],
-                new GregorianCalendar((int) row[2], (int) row[3], (int) row[4]),
+                dob,
                 (String) row[5],
                 (String) row[6],
                 (String) row[7],
-                (String) row[8]);
+                (String) row[8]
+            );
             patientList.them(p);
         }
-        System.out.println("__Danh sach bệnh nhân mẫu__");
+
+        daThemMau = true;
+        System.out.println("Đã thêm danh sách bệnh nhân mẫu.");
     }
 
     public ListChung<Patient> getPatientList() {
@@ -36,32 +45,30 @@ public class TestPatient {
     }
 
     public void addPatient() {
-        Scanner srk = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
 
         System.out.print("Nhập số lượng bệnh nhân cần thêm: ");
-        int n = Integer.parseInt(srk.nextLine());
+        int n = Integer.parseInt(scanner.nextLine());
 
         for (int i = 0; i < n; i++) {
-            System.out.println("\nNhập thông tin bệnh nhân thứ " + (i + 1));
+            System.out.println("\nNhập bệnh nhân thứ " + (i + 1));
 
             System.out.print("Mã bệnh nhân: ");
-            String id = srk.nextLine();
+            String id = scanner.nextLine();
             if (patientList.tonTai(id)) {
                 System.out.println("Mã bệnh nhân đã tồn tại. Bỏ qua.");
                 continue;
             }
 
             System.out.print("Họ tên: ");
-            String name = srk.nextLine();
+            String name = scanner.nextLine();
 
             Calendar dob = null;
             while (dob == null) {
                 try {
                     System.out.print("Ngày sinh (dd/MM/yyyy): ");
-                    String input = srk.nextLine().trim();
-                    Date date = sdf.parse(input);
+                    Date date = sdf.parse(scanner.nextLine());
                     dob = Calendar.getInstance();
                     dob.setTime(date);
                 } catch (Exception e) {
@@ -70,35 +77,46 @@ public class TestPatient {
             }
 
             System.out.print("Giới tính: ");
-            String gender = srk.nextLine();
+            String gender = scanner.nextLine();
 
             System.out.print("Địa chỉ: ");
-            String address = srk.nextLine();
+            String address = scanner.nextLine();
 
             System.out.print("Số điện thoại: ");
-            String phone = srk.nextLine();
+            String phone = scanner.nextLine();
 
             System.out.print("Tiền sử bệnh: ");
-            String medicalHistory = srk.nextLine();
+            String history = scanner.nextLine();
 
-            Patient p = new Patient(id, name, dob, gender, address, phone, medicalHistory);
+            Patient p = new Patient(id, name, dob, gender, address, phone, history);
             patientList.them(p);
         }
 
-        System.out.println("\nDanh sách bệnh nhân sau khi thêm:");
-        patientList.inDanhSach();
+        System.out.println("\nDanh sách sau khi thêm:");
+        inPatient();
     }
 
     public void inPatient() {
-         System.out.printf("%-10s | %-20s | %-12s | %-6s | %-15s | %-11s | %-20s\n","Mã BN", "Họ tên", "Ngày sinh", "Giới", "Địa chỉ", "SĐT", "Tiền sử bệnh");
-        System.out.println("---------------------------------------------------------------------------------------------------");
-        patientList.inDanhSach();
+        if (patientList.getList().isEmpty()) {
+            System.out.println("Danh sách bệnh nhân rỗng.");
+            return;
+        }
+
+        inTieuDe();
+        for (Patient p : patientList.getList()) {
+            System.out.println(p);
+        }
+    }
+
+    private void inTieuDe() {
+        System.out.printf("%-10s | %-20s | %-12s | %-3s | %-6s | %-15s | %-11s | %-20s\n",
+                "Mã BN", "Họ tên", "Ngày sinh", "Tuổi", "Giới", "Địa chỉ", "SĐT", "Tiền sử bệnh");
+        System.out.println("------------------------------------------------------------------------------------------------------------");
     }
 
     public void updatePatient() {
-        Scanner snr = new Scanner(System.in);
         System.out.print("Nhập ID bệnh nhân cần sửa: ");
-        String id = snr.nextLine();
+        String id = scanner.nextLine();
 
         Patient old = patientList.timKiem(id);
         if (old == null) {
@@ -106,54 +124,57 @@ public class TestPatient {
             return;
         }
 
-        System.out.println("Đang sửa thông tin cho bệnh nhân: " + old.getName());
+        System.out.println("Đang sửa thông tin cho: " + old.getName());
 
         System.out.print("Tên mới: ");
-        String name = snr.nextLine();
+        String name = scanner.nextLine();
 
         System.out.print("Giới tính mới: ");
-        String gender = snr.nextLine();
+        String gender = scanner.nextLine();
 
         System.out.print("Địa chỉ mới: ");
-        String address = snr.nextLine();
+        String address = scanner.nextLine();
 
         System.out.print("Số điện thoại mới: ");
-        String phone = snr.nextLine();
+        String phone = scanner.nextLine();
 
         System.out.print("Tiền sử bệnh mới: ");
-        String history = snr.nextLine();
+        String history = scanner.nextLine();
 
-        Calendar dob = old.getDob();
+        Patient updated = new Patient(id, name, old.getDob(), gender, address, phone, history);
+        patientList.sua(id, updated);
 
-        Patient newP = new Patient(id, name, dob, gender, address, phone, history);
-        patientList.sua(id, newP);
-
-        System.out.println("\nDanh sách sau khi sửa:");
-        patientList.inDanhSach();
+        System.out.println("\nĐã cập nhật. Danh sách mới:");
+        inPatient();
     }
 
     public void deletePatient() {
-        Scanner snr = new Scanner(System.in);
-        System.out.print("Nhập ID bệnh nhân cần xóa: ");
-        String id = snr.nextLine();
+        System.out.print("Nhập ID bệnh nhân cần xoá: ");
+        String id = scanner.nextLine();
 
-        patientList.xoa(id);
+        if (patientList.xoa(id)) {
+            System.out.println("Đã xoá.");
+        } else {
+            System.out.println("Không tìm thấy bệnh nhân.");
+        }
 
-        System.out.println("\nDanh sách sau khi xóa:");
-        patientList.inDanhSach();
+        System.out.println("\nDanh sách còn lại:");
+        inPatient();
     }
 
     public void timKiemPatient() {
         Scanner snr = new Scanner(System.in);
-        System.out.print("Nhập ID bệnh nhân cần tìm: ");
-        String id = snr.nextLine();
-
-        Patient p = patientList.timKiem(id);
-        if (p == null) {
+        System.out.print("Nhập từ khóa tìm kiếm (ID, tên, địa chỉ, SĐT...): ");
+        String keyword = snr.nextLine();
+        List<Patient> ketQua = new PatientSearch().searchByAnyField(patientList.getList(), keyword);
+        if (ketQua.isEmpty()) {
             System.out.println("Không tìm thấy bệnh nhân.");
         } else {
-            System.out.println("Thông tin bệnh nhân:");
-            System.out.println(p);
+            System.out.println("__Kết quả tìm kiếm__:");
+            inTieuDe();
+            for (Patient p : ketQua) {
+                System.out.println(p);
+            }
         }
     }
 
@@ -161,8 +182,11 @@ public class TestPatient {
         System.out.println("Tổng số bệnh nhân: " + patientList.getList().size());
     }
 
-    // Dùng trong bước tạo bệnh án/schedule: kiểm tra ID tồn tại
     public static boolean checkTonTaiBenhNhan(String id) {
         return patientList.tonTai(id);
+    }
+
+    public static Patient getBenhNhanTheoMa(String id) {
+        return patientList.timKiem(id);
     }
 }
