@@ -6,7 +6,7 @@ public class Room implements CoId {
     private String id;
     private String name;
     private String doctorId;
-    private String doctorName; // Thêm tên bác sĩ
+    private String doctorName;
 
     public Room(String id, String name, String doctorId, String doctorName) {
         this.id = id;

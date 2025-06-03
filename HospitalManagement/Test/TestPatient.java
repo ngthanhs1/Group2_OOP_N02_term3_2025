@@ -101,7 +101,7 @@ public class TestPatient {
             System.out.println("Danh sách bệnh nhân rỗng.");
             return;
         }
-
+    
         inTieuDe();
         for (Patient p : patientList.getList()) {
             System.out.println(p);
