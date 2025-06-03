@@ -1,9 +1,8 @@
 package HospitalManagement.src;
 
-//import HospitalManagement.Test.TestBenhan;
-//import HospitalManagement.Test.TestPatient;
+import HospitalManagement.Test.TestBenhan;
+import HospitalManagement.Test.TestPatient;
 //import HospitalManagement.Test.TestSchedule;
-import HospitalManagement.Test.TestSequence;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -21,18 +20,16 @@ public class App {
     // tba.themBenhAn();
     // tba.inBenhAn();
 
-    //TestPatient tpt = new TestPatient();
-    // tpt.dsMauPatient();
-    //tpt.inPatient();
+    TestPatient tpt = new TestPatient();
+    tpt.dsMauPatient();
+    tpt.inPatient();
     // tpt.addPatient();
     // tpt.updatePatient();
     // tpt.deletePatient();
     // tpt.timKiemPatient();
-    //TestBenhan tba = new TestBenhan();
-    //tba.themBenhan();
-    //tba.inBenhan();
-    TestSequence tsq = new TestSequence();
-    tsq.runTest();
+    TestBenhan tba = new TestBenhan();
+    tba.themBenhan();
+    tba.inBenhan();
 
   }
 }

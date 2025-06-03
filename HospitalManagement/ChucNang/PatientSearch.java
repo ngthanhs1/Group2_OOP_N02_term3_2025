@@ -15,7 +15,6 @@ public class PatientSearch {
                      || p.getAddress().toLowerCase().contains(lowerKeyword)
                      || p.getGender().toLowerCase().contains(lowerKeyword)
                      || p.getPhone().toLowerCase().contains(lowerKeyword)
-                     || p.getMedicalHistory().toLowerCase().contains(lowerKeyword)
                      || sdf.format(p.getDob().getTime()).contains(lowerKeyword)
                      || String.valueOf(p.getAge()).contains(lowerKeyword)
                 ).collect(Collectors.toList());

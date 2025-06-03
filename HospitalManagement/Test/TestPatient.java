@@ -14,13 +14,14 @@ public class TestPatient {
     private static boolean daThemMau = false;
 
     private static final Object[][] data = {
-        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.MARCH, 19, "Nam", "Hà Nội", "0123456789", "Suy tinh thể"},
-        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nữ", "Vĩnh Phúc", "0987654321", "Tiểu đường"},
-        {"BN003", "Lê Hoàng Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333", "Cao huyết áp"}
+        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.MARCH, 19, "Nam", "Hà Nội", "0123456789"},
+        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nữ", "Vĩnh Phúc", "0987654321"},
+        {"BN003", "Lê Hoàng Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333"}
     };
 
     public void dsMauPatient() {
         if (daThemMau) return;
+        patientList.setHienThongBao(false);
 
         for (Object[] row : data) {
             Calendar dob = new GregorianCalendar((int) row[2], (int) row[3], (int) row[4]);
@@ -30,8 +31,7 @@ public class TestPatient {
                 dob,
                 (String) row[5],
                 (String) row[6],
-                (String) row[7],
-                (String) row[8]
+                (String) row[7]
             );
             patientList.them(p);
         }
@@ -88,7 +88,7 @@ public class TestPatient {
             System.out.print("Tiền sử bệnh: ");
             String history = scanner.nextLine();
 
-            Patient p = new Patient(id, name, dob, gender, address, phone, history);
+            Patient p = new Patient(id, name, dob, gender, address, phone);
             patientList.them(p);
         }
 
@@ -109,9 +109,9 @@ public class TestPatient {
     }
 
     private void inTieuDe() {
-        System.out.printf("%-10s | %-20s | %-12s | %-3s | %-6s | %-15s | %-11s | %-20s\n",
-                "Mã BN", "Họ tên", "Ngày sinh", "Tuổi", "Giới", "Địa chỉ", "SĐT", "Tiền sử bệnh");
-        System.out.println("------------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-10s | %-20s | %-12s | %-3s | %-6s | %-15s | %-11s\n",
+                "Mã BN", "Họ tên", "Ngày sinh", "Tuổi", "Giới", "Địa chỉ", "SĐT");
+        System.out.println("------------------------------------------------------------------------------------------------");
     }
 
     public void updatePatient() {
@@ -138,10 +138,7 @@ public class TestPatient {
         System.out.print("Số điện thoại mới: ");
         String phone = scanner.nextLine();
 
-        System.out.print("Tiền sử bệnh mới: ");
-        String history = scanner.nextLine();
-
-        Patient updated = new Patient(id, name, old.getDob(), gender, address, phone, history);
+        Patient updated = new Patient(id, name, old.getDob(), gender, address, phone);
         patientList.sua(id, updated);
 
         System.out.println("\nĐã cập nhật. Danh sách mới:");

@@ -10,13 +10,16 @@ public class TestRoom {
     private final Scanner sc = new Scanner(System.in);
 
     public TestRoom() {
+        dsRoom.setHienThongBao(false);
         dsMauRoom();
     }
 
     public void dsMauRoom() {
-        dsRoom.them(new Room("R01", "Phòng khám Nội", "D01", "Nguyễn Văn A"));
-        dsRoom.them(new Room("R02", "Phòng khám Ngoại", "D02", "Trần Thị B"));
-        dsRoom.them(new Room("R03", "Phòng khám Da liễu", "D03", "Lê Văn C"));
+        dsRoom.them(new Room("R01", "Phòng khám Nội", "D01", "BS.Nguyễn Văn Anh"));
+        dsRoom.them(new Room("R02", "Phòng khám Ngoại", "D02", "Bs.Trần Thị Bình"));
+        dsRoom.them(new Room("R03", "Phòng khám Da liễu", "D03", "BS.Lê Văn Cương"));
+        dsRoom.them(new Room("R04", "Phòng khám Tai mũi họng", "D04", "BS.Trần Văn Dũng"));
+        dsRoom.them(new Room("R05", "Phòng khám Chụp XQ", "D05", "BS.Trịnh Văn An"));
     }
 
     public void hienThiDanhSach() {

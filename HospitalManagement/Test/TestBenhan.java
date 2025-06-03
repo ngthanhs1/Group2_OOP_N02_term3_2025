@@ -1,7 +1,6 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.BenhAn.BenhAn;
-import HospitalManagement.Room.Doctor;
 import HospitalManagement.Room.Room;
 import HospitalManagement.CRUD.ListChung;
 
@@ -19,9 +18,11 @@ public class TestBenhan {
 
     static {
         sdf.setLenient(false);
-        testDoctor.dsMauDoctor();    // Danh sách bác sĩ mẫu
-        testRoom.dsMauRoom();        // Danh sách phòng khám mẫu
-        testPatient.dsMauPatient();  // Danh sách bệnh nhân mẫu
+        dsBenhan.setHienThongBao(false);
+        testDoctor.dsDoctor(); 
+        testRoom.dsMauRoom();
+        testPatient.dsMauPatient();
+        //dsBenhan.setHienThongBao(true);
     }
 
     public void themBenhan() {
@@ -51,6 +52,21 @@ public class TestBenhan {
                 continue;
             }
 
+            // Gán phòng và bác sĩ sau khi nhập mã bệnh nhân
+            List<Room> dsRoom = testRoom.getRoomList().getList();
+            if (dsRoom.isEmpty()) {
+                System.out.println("Không có phòng khám để gán.");
+                continue;
+            }
+
+            Room roomRandom = dsRoom.get(new Random().nextInt(dsRoom.size()));
+            String roomId = roomRandom.getId();
+            String doctorId = roomRandom.getDoctorId();
+
+            System.out.println("Phòng khám được gán: " + roomRandom.getName());
+            System.out.println("Bác sĩ phụ trách: " + roomRandom.getDoctorName());
+
+            // Nhập thông tin khám
             System.out.print("Nhập ngày khám (dd/MM/yyyy): ");
             Calendar ngayKham = Calendar.getInstance();
             try {
@@ -70,19 +86,6 @@ public class TestBenhan {
             System.out.print("Nhập chẩn đoán: ");
             String chanDoan = sc.nextLine().trim();
 
-            // Chọn ngẫu nhiên phòng và bác sĩ tương ứng
-            List<Room> dsRoom = testRoom.getRoomList().getList();
-            if (dsRoom.isEmpty()) {
-                System.out.println("Không có phòng khám để gán.");
-                continue;
-            }
-            Room roomRandom = dsRoom.get(new Random().nextInt(dsRoom.size()));
-            String roomId = roomRandom.getId();
-            String doctorId = roomRandom.getDoctorId();
-
-            System.out.println("Đã gán phòng khám: " + roomRandom.getName() +
-                               " | Bác sĩ phụ trách: " + roomRandom.getDoctorName());
-
             BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSu, chanDoan, doctorId, roomId);
             dsBenhan.them(ba);
             System.out.println("Đã thêm bệnh án thành công.");
@@ -98,23 +101,5 @@ public class TestBenhan {
 
     public ListChung<BenhAn> getBenhanList() {
         return dsBenhan;
-    }
-
-    public void dsMauBenhAn() {
-        ArrayList<BenhAn> dsMau = new ArrayList<>();
-
-        try {
-            Calendar ngay1 = Calendar.getInstance();
-            Calendar ngay2 = Calendar.getInstance();
-            ngay1.setTime(sdf.parse("01/06/2024"));
-            ngay2.setTime(sdf.parse("05/06/2024"));
-
-            dsMau.add(new BenhAn("BA01", "BN01", ngay1, "Sốt nhẹ", "Không rõ", "Cảm lạnh", "BS01", "P01"));
-            dsMau.add(new BenhAn("BA02", "BN02", ngay2, "Ho", "Hen suyễn", "Viêm họng", "BS02", "P02"));
-        } catch (Exception e) {
-            System.out.println("Lỗi định dạng ngày!");
-        }
-
-        dsBenhan.addList(dsMau);
     }
 }

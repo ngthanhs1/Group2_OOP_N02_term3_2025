@@ -122,9 +122,9 @@ public class BenhAn implements CoId, LinkBenhAn {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return String.format(
-        "Mã BA: %s | Mã BN: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s | Bác sĩ: %s | Mã phòng: %s",
-            id, patientId, sdf.format(ngayKham.getTime()), trieuChung, tienSuBenh, chanDoan, getDoctorNameById(doctorId), roomId
+            "Mã BA: %s | Mã BN: %s | Phòng khám: %s | Bác sĩ: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s",
+            id, patientId, roomId, getDoctorNameById(doctorId), sdf.format(ngayKham.getTime()),
+            trieuChung, tienSuBenh, chanDoan
         );
     }
-
 }

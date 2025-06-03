@@ -5,36 +5,47 @@ import java.util.ArrayList;
 public class ListChung<T extends CoId> {
     private ArrayList<T> danhSach = new ArrayList<>();
     private boolean daThemMau = false;
+    private boolean hienThongBao = true;
+
+    public void setHienThongBao(boolean hien) {
+        this.hienThongBao = hien;
+    }
 
     public void them(T obj) {
-    if (timKiem(obj.getId()) != null) {
-        System.out.println("Không thể thêm ID: '" + obj.getId() + "' đã tồn tại.");
-        return;
+        if (timKiem(obj.getId()) != null) {
+            if (hienThongBao)
+                System.out.println("Không thể thêm ID: '" + obj.getId() + "' đã tồn tại.");
+            return;
+        }
+        danhSach.add(obj);
+        if (hienThongBao)
+            System.out.println("Đã thêm thành công có ID: " + obj.getId());
     }
-    danhSach.add(obj);
-    System.out.println("Đã thêm thành công có ID: " + obj.getId());
-}
 
     public void sua(String id, T objMoi) {
         for (int i = 0; i < danhSach.size(); i++) {
             if (danhSach.get(i).getId().equalsIgnoreCase(id)) {
                 danhSach.set(i, objMoi);
-                System.out.println("Đã sửa thành công!");
+                if (hienThongBao)
+                    System.out.println("Đã sửa thành công!");
                 return;
             }
         }
-        System.out.println("Không tìm thấy đối tượng có ID: " + id);
+        if (hienThongBao)
+            System.out.println("Không tìm thấy đối tượng có ID: " + id);
     }
 
     public boolean xoa(String id) {
         for (int i = 0; i < danhSach.size(); i++) {
             if (danhSach.get(i).getId().equalsIgnoreCase(id)) {
                 danhSach.remove(i);
-                System.out.println("Đã xóa thành công!");
+                if (hienThongBao)
+                    System.out.println("Đã xóa thành công!");
                 return true;
             }
         }
-        System.out.println("Không tìm thấy đối tượng có ID: " + id);
+        if (hienThongBao)
+            System.out.println("Không tìm thấy đối tượng có ID: " + id);
         return false;
     }
 
@@ -82,18 +93,20 @@ public class ListChung<T extends CoId> {
     public void setDaThemMau(boolean daThemMau) {
         this.daThemMau = daThemMau;
     }
-    public void addList(ArrayList<T> ds) {
-    if (daThemMau) {
-        System.out.println("Danh sách mẫu đã được thêm.");
-        return;
-    }
-    for (T obj : ds) {
-        if (timKiem(obj.getId()) == null) {
-            danhSach.add(obj);
-        }
-    }
-    daThemMau = true;
-    System.out.println("Đã thêm danh sách mẫu thành công!");
-}
 
+    public void addList(ArrayList<T> ds) {
+        if (daThemMau) {
+            if (hienThongBao)
+                System.out.println("Danh sách mẫu đã được thêm.");
+            return;
+        }
+        for (T obj : ds) {
+            if (timKiem(obj.getId()) == null) {
+                danhSach.add(obj);
+            }
+        }
+        daThemMau = true;
+        if (hienThongBao)
+            System.out.println("Đã thêm danh sách mẫu thành công!");
+    }
 }

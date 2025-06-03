@@ -10,13 +10,16 @@ public class TestDoctor {
     private final Scanner sc = new Scanner(System.in);
 
     public TestDoctor() {
-        dsMauDoctor();
+        dsDoctor.setHienThongBao(false);
+        dsDoctor();
     }
 
-    public void dsMauDoctor() {
-        dsDoctor.them(new Doctor("D01", "Bs.Nguyễn Văn An"));
-        dsDoctor.them(new Doctor("D02", "Bs.Trần Thị Bình"));
-        dsDoctor.them(new Doctor("D03", "Bs.Lê Văn Cường"));
+    public void dsDoctor() {
+        dsDoctor.them(new Doctor("D01", "BS.Nguyễn Văn An"));
+        dsDoctor.them(new Doctor("D02", "BS.Trần Thị Bình"));
+        dsDoctor.them(new Doctor("D03", "BS.Lê Văn Cường"));
+        dsDoctor.them(new Doctor("D04", "BS.Trần Văn Dũng"));
+        dsDoctor.them(new Doctor("D05", "Bs.Trịnh Văn An"));
     }
 
     public void hienThiDanhSach() {

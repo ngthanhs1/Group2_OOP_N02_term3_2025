@@ -13,17 +13,14 @@ public class Patient implements CoId {
     private String gender;
     private String address;
     private String phone;
-    private String medicalHistory;
 
-    public Patient(String id, String name, Calendar dob, String gender, String address, String phone,
-                   String medicalHistory) {
+    public Patient(String id, String name, Calendar dob, String gender, String address, String phone) {
         this.id = id;
         this.name = name;
         setDob(dob); // sẽ tự tính tuổi khi set DOB
         this.gender = gender;
         this.address = address;
         this.phone = phone;
-        this.medicalHistory = medicalHistory;
     }
 
     public String getId() {
@@ -91,19 +88,11 @@ public class Patient implements CoId {
         this.phone = phone;
     }
 
-    public String getMedicalHistory() {
-        return medicalHistory;
-    }
-
-    public void setMedicalHistory(String medicalHistory) {
-        this.medicalHistory = medicalHistory;
-    }
-
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String dobStr = (dob != null) ? sdf.format(dob.getTime()) : "N/A";
-        return String.format("%-10s | %-20s | %-12s | %-3d | %-6s | %-15s | %-11s | %-20s",
-                id, name, dobStr, age, gender, address, phone, medicalHistory);
+        return String.format("%-10s | %-20s | %-12s | %-3d | %-6s | %-15s | %-11s",
+                id, name, dobStr, age, gender, address, phone);
     }
 }
