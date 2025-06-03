@@ -32,7 +32,7 @@ public class App {
     //tba.themBenhan();
     //tba.inBenhan();
     TestSequence tsq = new TestSequence();
-    tsq.test();
+    tsq.runTest();
 
   }
 }

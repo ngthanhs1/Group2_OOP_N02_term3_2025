@@ -1,7 +1,10 @@
 package HospitalManagement.Test;
 
+import HospitalManagement.Review.Sequence;
+import HospitalManagement.Review.Selector;
+
 public class TestSequence {
-    public static void test() {
+    public static void runTest() {
         Sequence s = new Sequence(10);
         for (int i = 0; i < 10; i++) {
             s.add(Integer.toString(i));  

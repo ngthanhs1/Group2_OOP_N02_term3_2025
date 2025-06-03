@@ -1,3 +1,5 @@
+package HospitalManagement.Review;
+
 public class Sequence {
     private Object[] objects;
     private int next = 0;

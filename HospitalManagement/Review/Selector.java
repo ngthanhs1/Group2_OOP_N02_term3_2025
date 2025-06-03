@@ -1,3 +1,5 @@
+package HospitalManagement.Review;
+
 public interface Selector {
     boolean end();
     Object current();
