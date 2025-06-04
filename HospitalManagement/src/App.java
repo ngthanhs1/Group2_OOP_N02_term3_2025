@@ -9,16 +9,6 @@ public class App {
     System.out.println("Chao ca nha iu :3");
     System.out.println();
 
-    // TestPatient tpt = new TestPatient();
-    // tpt.themDanhSachMau();
-    // tpt.addPatient();
-    // tpt.inPatient();
-
-    // TestPatient tpt = new TestPatient();
-    // tpt.themDanhSachMau();
-    // TestBenhan tba = new TestBenhan(tpt);
-    // tba.themBenhAn();
-    // tba.inBenhAn();
 
     TestPatient tpt = new TestPatient();
     tpt.dsMauPatient();

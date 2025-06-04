@@ -22,11 +22,13 @@ public class TestBenhan {
         testDoctor.dsDoctor(); 
         testRoom.dsMauRoom();
         testPatient.dsMauPatient();
-        //dsBenhan.setHienThongBao(true);
+        
+        BenhAn.setDoctorList(testDoctor.getDoctorList().getList());
+
     }
 
     public void themBenhan() {
-        System.out.print("Nhập số lượng bệnh án cần thêm: ");
+        System.out.print("\nNhập số lượng bệnh án cần thêm: ");
         int soLuong;
         try {
             soLuong = Integer.parseInt(sc.nextLine().trim());
@@ -88,12 +90,11 @@ public class TestBenhan {
 
             BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSu, chanDoan, doctorId, roomId);
             dsBenhan.them(ba);
-            System.out.println("Đã thêm bệnh án thành công.");
         }
     }
 
     public void inBenhan() {
-        System.out.println("=== DANH SÁCH BỆNH ÁN ===");
+        System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
         for (BenhAn ba : dsBenhan.getList()) {
             System.out.println(ba);
         }
