@@ -15,11 +15,11 @@ public class TestDoctor {
     }
 
     public void dsDoctor() {
-        dsDoctor.them(new Doctor("D01", "BS.Nguyễn Văn An"));
+        dsDoctor.them(new Doctor("D01", "BS.Nguyễn Văn Anh"));
         dsDoctor.them(new Doctor("D02", "BS.Trần Thị Bình"));
         dsDoctor.them(new Doctor("D03", "BS.Lê Văn Cường"));
         dsDoctor.them(new Doctor("D04", "BS.Trần Văn Dũng"));
-        dsDoctor.them(new Doctor("D05", "Bs.Trịnh Văn An"));
+        dsDoctor.them(new Doctor("D05", "BS.Trịnh Văn An"));
     }
 
     public void hienThiDanhSach() {

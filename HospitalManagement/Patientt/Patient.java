@@ -17,7 +17,7 @@ public class Patient implements CoId {
     public Patient(String id, String name, Calendar dob, String gender, String address, String phone) {
         this.id = id;
         this.name = name;
-        setDob(dob); // sẽ tự tính tuổi khi set DOB
+        setDob(dob);
         this.gender = gender;
         this.address = address;
         this.phone = phone;
@@ -92,7 +92,7 @@ public class Patient implements CoId {
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String dobStr = (dob != null) ? sdf.format(dob.getTime()) : "N/A";
-        return String.format("%-10s | %-20s | %-12s | %-3d | %-6s | %-15s | %-11s",
+        return String.format("%-10s | %-18s | %-12s | %-3d | %-6s | %-12s | %-10s",
                 id, name, dobStr, age, gender, address, phone);
     }
 }

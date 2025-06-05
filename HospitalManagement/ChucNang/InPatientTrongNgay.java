@@ -24,7 +24,6 @@ public class InPatientTrongNgay{
             System.out.println("Ngày không hợp lệ.");
             return;
         }
-
         boolean found = false;
         System.out.println("\n=== Danh sách bệnh nhân khám trong ngày " + inputDate + " ===");
 

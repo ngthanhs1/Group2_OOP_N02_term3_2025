@@ -10,7 +10,7 @@ import java.util.*;
 public class TestBenhan {
     private static final Scanner sc = new Scanner(System.in);
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private static final ListChung<BenhAn> dsBenhan = new ListChung<>();
+    private static  ListChung<BenhAn> dsBenhan = new ListChung<>();
 
     private static final TestDoctor testDoctor = new TestDoctor();
     private static final TestRoom testRoom = new TestRoom();
@@ -95,6 +95,9 @@ public class TestBenhan {
 
     public void inBenhan() {
         System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
+        System.out.printf("%-5s | %-5s | %-5s | %-18s | %-12s | %-12s | %-12s | %-12s\n",
+        "Mã BA", "Mã BN", "Phòng", "Bác sĩ", "Ngày khám", "Triệu chứng", "Tiền sử bệnh", "Chẩn đoán");
+        System.out.println("----------------------------------------------------------------------------------------------------------");
         for (BenhAn ba : dsBenhan.getList()) {
             System.out.println(ba);
         }

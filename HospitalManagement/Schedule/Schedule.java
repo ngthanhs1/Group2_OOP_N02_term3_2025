@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import HospitalManagement.CRUD.CoId;
-import HospitalManagement.CRUD.LinkThuoc;
 
-public class Schedule implements CoId, LinkThuoc{
+
+public class Schedule implements CoId{
     private String id;
     private String benhanId;
     private String patientId;

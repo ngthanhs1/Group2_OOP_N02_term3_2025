@@ -5,10 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import HospitalManagement.CRUD.CoId;
-import HospitalManagement.CRUD.LinkBenhAn;
 import HospitalManagement.Room.Doctor;
 
-public class BenhAn implements CoId, LinkBenhAn {
+public class BenhAn implements CoId{
     private String id;
     private String patientId;
     private Calendar ngayKham;
@@ -121,10 +120,7 @@ public class BenhAn implements CoId, LinkBenhAn {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        return String.format(
-            "Mã BA: %s | Mã BN: %s | Phòng khám: %s | Bác sĩ: %s | Ngày khám: %s | Triệu chứng: %s | Tiền sử bệnh: %s | Chẩn đoán: %s",
-            id, patientId, roomId, getDoctorNameById(doctorId), sdf.format(ngayKham.getTime()),
-            trieuChung, tienSuBenh, chanDoan
-        );
+        return String.format("%-5s | %-5s | %-5s | %-18s | %-12s | %-12s | %-12s | %-12s",id,patientId,roomId,getDoctorNameById(doctorId),sdf.format(ngayKham.getTime()),trieuChung,tienSuBenh,chanDoan);
     }
+
 }

@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestPatient {
-    private static final ListChung<Patient> patientList = new ListChung<>();
+    private static  ListChung<Patient> patientList = new ListChung<>();
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean daThemMau = false;
 
@@ -110,7 +110,7 @@ public class TestPatient {
     }
 
     private void inTieuDe() {
-        System.out.printf("%-10s | %-20s | %-12s | %-3s | %-6s | %-15s | %-11s\n","Mã BN", "Họ tên", "Ngày sinh", "Tuổi", "Giới", "Địa chỉ", "SĐT");
+        System.out.printf("%-10s | %-18s | %-12s | %-3s | %-6s | %-12s | %-10s\n","Mã BN", "Họ tên", "Ngày sinh", "Tuổi", "Giới", "Địa chỉ", "SĐT");
         System.out.println("------------------------------------------------------------------------------------------------");
     }
 
