@@ -1,8 +1,9 @@
 package HospitalManagement.CRUD;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ListChung<T extends CoId> {
+public class ListChung<T extends CoId> implements Iterable<T> {
     private ArrayList<T> danhSach = new ArrayList<>();
     private boolean daThemMau = false;
     private boolean hienThongBao = true;
@@ -108,5 +109,10 @@ public class ListChung<T extends CoId> {
         daThemMau = true;
         if (hienThongBao)
             System.out.println("Đã thêm danh sách mẫu thành công!");
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return danhSach.iterator();
     }
 }

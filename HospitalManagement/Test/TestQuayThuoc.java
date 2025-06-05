@@ -1,27 +1,42 @@
 package HospitalManagement.Test;
 
-import HospitalManagement.QuayThuoc.QuayThuoc;
-import HospitalManagement.CRUD.ListChung;
+import HospitalManagement.Prescription.Prescription;
+import HospitalManagement.Medicine.Medicine;
+
+import java.util.Scanner;
 
 public class TestQuayThuoc {
-    private ListChung<QuayThuoc> danhSachQuay = new ListChung<>();
+    private Prescription prescription;
 
-    public void dsMauQuayThuoc() {
-        danhSachQuay.them(new QuayThuoc("QT01", "Quầy A", "Tầng 1"));
-        danhSachQuay.them(new QuayThuoc("QT02", "Quầy B", "Tầng 2"));
-        danhSachQuay.them(new QuayThuoc("QT03", "Quầy C", "Tầng 3"));
+    public TestQuayThuoc(TestPrescription tp) {
+        this.prescription = tp.getPrescription(); 
     }
 
-    public ListChung<QuayThuoc> getDanhSachQuay() {
-        return danhSachQuay;
+    // In danh sách thuốc trong đơn
+    public void inThuocTrongDon() {
+        System.out.println("== Danh sách thuốc trong đơn ==");
+        for (Medicine m : prescription.getDanhSachThuoc()) {
+            System.out.println(m);
+        }
     }
 
-    public void inDanhSachQuay() {
-        System.out.println("\n=== DANH SÁCH QUẦY THUỐC ===");
-        System.out.printf("%-5s | %-10s | %-10s\n", "ID", "Tên quầy", "Vị trí");
-        System.out.println("--------------------------------------");
-        for (QuayThuoc q : danhSachQuay.getList()) {
-            System.out.println(q);
+    // Tìm kiếm thuốc theo tên
+    public void timKiemTheoTen() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập tên thuốc cần tìm: ");
+        String tenCanTim = sc.nextLine().toLowerCase();
+
+        boolean timThay = false;
+        System.out.println("== Kết quả tìm kiếm ==");
+        for (Medicine m : prescription.getDanhSachThuoc()) {
+            if (m.getTenThuoc().toLowerCase().contains(tenCanTim)) {
+                System.out.println(m);
+                timThay = true;
+            }
+        }
+
+        if (!timThay) {
+            System.out.println("Không tìm thấy thuốc có tên chứa \"" + tenCanTim + "\".");
         }
     }
 }

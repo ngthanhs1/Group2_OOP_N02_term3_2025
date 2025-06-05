@@ -4,20 +4,37 @@ import HospitalManagement.CRUD.CoId;
 import HospitalManagement.Medicine.Medicine;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class Prescription implements CoId {
-    private String id; 
-    private String patientId; 
-    private List<Medicine> danhSachThuoc; 
-    private Calendar ngayCap; 
+    private String id;
+    private String patientId;
+    private List<Medicine> danhSachThuoc;
+    private Calendar ngayCap;
 
+    // Constructor đầy đủ
     public Prescription(String id, String patientId, List<Medicine> danhSachThuoc, Calendar ngayCap) {
         this.id = id;
         this.patientId = patientId;
-        this.danhSachThuoc = danhSachThuoc;
+        this.danhSachThuoc = danhSachThuoc != null ? danhSachThuoc : new ArrayList<>();
         this.ngayCap = ngayCap;
+    }
+
+    // Constructor mặc định (phục vụ TestPrescription)
+    public Prescription() {
+        this.id = "P" + System.currentTimeMillis(); // tự tạo ID đơn thuốc
+        this.patientId = "";
+        this.danhSachThuoc = new ArrayList<>();
+        this.ngayCap = Calendar.getInstance();
+    }
+
+    // Thêm thuốc vào danh sách
+    public void themThuoc(Medicine m) {
+        if (m != null) {
+            danhSachThuoc.add(m);
+        }
     }
 
     @Override

@@ -10,7 +10,7 @@ import java.util.*;
 public class TestBenhan {
     private static final Scanner sc = new Scanner(System.in);
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private static  ListChung<BenhAn> dsBenhan = new ListChung<>();
+    private static final ListChung<BenhAn> dsBenhan = new ListChung<>();
 
     private static final TestDoctor testDoctor = new TestDoctor();
     private static final TestRoom testRoom = new TestRoom();
@@ -19,12 +19,12 @@ public class TestBenhan {
     static {
         sdf.setLenient(false);
         dsBenhan.setHienThongBao(false);
-        testDoctor.dsDoctor(); 
+
+        testDoctor.dsDoctor();
         testRoom.dsMauRoom();
         testPatient.dsMauPatient();
-        
-        BenhAn.setDoctorList(testDoctor.getDoctorList().getList());
 
+        BenhAn.setDoctorList(testDoctor.getDoctorList().getList());
     }
 
     public void themBenhan() {
@@ -54,7 +54,6 @@ public class TestBenhan {
                 continue;
             }
 
-            // Gán phòng và bác sĩ sau khi nhập mã bệnh nhân
             List<Room> dsRoom = testRoom.getRoomList().getList();
             if (dsRoom.isEmpty()) {
                 System.out.println("Không có phòng khám để gán.");
@@ -68,10 +67,9 @@ public class TestBenhan {
             System.out.println("Phòng khám được gán: " + roomRandom.getName());
             System.out.println("Bác sĩ phụ trách: " + roomRandom.getDoctorName());
 
-            // Nhập thông tin khám
-            System.out.print("Nhập ngày khám (dd/MM/yyyy): ");
             Calendar ngayKham = Calendar.getInstance();
             try {
+                System.out.print("Nhập ngày khám (dd/MM/yyyy): ");
                 Date date = sdf.parse(sc.nextLine().trim());
                 ngayKham.setTime(date);
             } catch (Exception e) {
@@ -96,7 +94,7 @@ public class TestBenhan {
     public void inBenhan() {
         System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
         System.out.printf("%-5s | %-5s | %-5s | %-18s | %-12s | %-12s | %-12s | %-12s\n",
-        "Mã BA", "Mã BN", "Phòng", "Bác sĩ", "Ngày khám", "Triệu chứng", "Tiền sử bệnh", "Chẩn đoán");
+                "Mã BA", "Mã BN", "Phòng", "Bác sĩ", "Ngày khám", "Triệu chứng", "Tiền sử bệnh", "Chẩn đoán");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         for (BenhAn ba : dsBenhan.getList()) {
             System.out.println(ba);
