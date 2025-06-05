@@ -12,7 +12,6 @@ public class TestQuayThuoc {
         this.prescription = tp.getPrescription(); 
     }
 
-    // In danh sách thuốc trong đơn
     public void inThuocTrongDon() {
         System.out.println("== Danh sách thuốc trong đơn ==");
         for (Medicine m : prescription.getDanhSachThuoc()) {
@@ -20,7 +19,6 @@ public class TestQuayThuoc {
         }
     }
 
-    // Tìm kiếm thuốc theo tên
     public void timKiemTheoTen() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập tên thuốc cần tìm: ");

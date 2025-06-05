@@ -14,7 +14,6 @@ public class Prescription implements CoId {
     private List<Medicine> danhSachThuoc;
     private Calendar ngayCap;
 
-    // Constructor đầy đủ
     public Prescription(String id, String patientId, List<Medicine> danhSachThuoc, Calendar ngayCap) {
         this.id = id;
         this.patientId = patientId;
@@ -22,7 +21,6 @@ public class Prescription implements CoId {
         this.ngayCap = ngayCap;
     }
 
-    // Constructor mặc định (phục vụ TestPrescription)
     public Prescription() {
         this.id = "P" + System.currentTimeMillis(); // tự tạo ID đơn thuốc
         this.patientId = "";
@@ -30,7 +28,6 @@ public class Prescription implements CoId {
         this.ngayCap = Calendar.getInstance();
     }
 
-    // Thêm thuốc vào danh sách
     public void themThuoc(Medicine m) {
         if (m != null) {
             danhSachThuoc.add(m);
