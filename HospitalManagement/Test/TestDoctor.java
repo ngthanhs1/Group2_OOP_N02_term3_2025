@@ -13,7 +13,6 @@ public class TestDoctor {
         dsDoctor.setHienThongBao(false);
         dsDoctor();
     }
-
     public void dsDoctor() {
         dsDoctor.them(new Doctor("D01", "BS.Nguyễn Văn Anh"));
         dsDoctor.them(new Doctor("D02", "BS.Trần Thị Bình"));

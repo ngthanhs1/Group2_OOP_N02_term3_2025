@@ -3,6 +3,7 @@ package HospitalManagement.Test;
 import HospitalManagement.BenhAn.BenhAn;
 import HospitalManagement.Room.Room;
 import HospitalManagement.CRUD.ListChung;
+import HospitalManagement.ChucNang.InPatientTrongNgay;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

@@ -4,6 +4,7 @@ import HospitalManagement.Schedule.Schedule;
 import HospitalManagement.BenhAn.BenhAn;
 import HospitalManagement.Patientt.Patient;
 import HospitalManagement.CRUD.ListChung;
+import HospitalManagement.ChucNang.LichCapThuoc;
 import HospitalManagement.Test.TestBenhan;
 import HospitalManagement.Test.TestPatient;
 
@@ -15,13 +16,11 @@ public class TestSchedule {
     private ListChung<Patient> dsPatient = new ListChung<>();
     private ListChung<BenhAn> dsBenhan = new ListChung<>();
 
-    // Constructor
     public TestSchedule(TestPatient testPatient, TestBenhan testBenhan) {
         this.dsPatient = testPatient.getPatientList();
         this.dsBenhan = testBenhan.getBenhanList();
     }
 
-    // Thêm lịch cấp thuốc
     public void themSchedule() {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -76,7 +75,6 @@ public class TestSchedule {
         }
     }
 
-    // In danh sách
     public void inSchedule() {
         System.out.println("\n--- Danh sách lịch cấp thuốc ---");
         System.out.printf("%-8s | %-8s | %-8s | %-15s | %-10s | %-13s\n",
@@ -84,8 +82,6 @@ public class TestSchedule {
         System.out.println("-----------------------------------------------------------------------------------");
         dsSchedule.inDanhSach();
     }
-
-    // Xóa lịch cấp thuốc
     public void xoaSchedule() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã schedule cần xoá: ");
@@ -100,8 +96,6 @@ public class TestSchedule {
             dsSchedule.inDanhSach();
         }
     }
-
-    // Sửa lịch cấp thuốc
     public void suaSchedule() {
         Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -143,8 +137,12 @@ public class TestSchedule {
         dsSchedule.inDanhSach();
     }
 
-    // Getter
     public ListChung<Schedule> getDsSchedule() {
         return dsSchedule;
     }
+    public void inCapThuocTrongNgay() {
+    LichCapThuoc inTheoNgay = new LichCapThuoc(dsSchedule);
+    inTheoNgay.inTheoNgay();
+}
+
 }

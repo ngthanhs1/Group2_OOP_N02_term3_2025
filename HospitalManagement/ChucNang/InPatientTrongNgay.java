@@ -39,12 +39,10 @@ public class InPatientTrongNgay{
                 found = true;
             }
         }
-
         if (!found) {
             System.out.println("Không có bệnh nhân nào khám trong ngày này.");
         }
     }
-
     private static boolean sameDate(Calendar c1, Calendar c2) {
         return c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR) &&
                c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH) &&

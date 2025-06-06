@@ -25,5 +25,6 @@ public class App {
     TestSchedule ts = new TestSchedule(tpt, tba);
     ts.themSchedule();
     ts.inSchedule();
+    ts.inCapThuocTrongNgay();
   }
 }
