@@ -22,5 +22,5 @@ Yêu cầu chính:
 <img src ="img/DuanHospital.png">
 
 ### 2.UML Sequence Diagram
-<img src ="img/Untitled.png">
+<img src ="img/Lưu đồ chức năng.png">
 
