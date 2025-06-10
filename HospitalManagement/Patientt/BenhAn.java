@@ -1,11 +1,10 @@
-package HospitalManagement.BenhAn;
+package HospitalManagement.Patientt;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
 import HospitalManagement.CRUD.CoId;
-import HospitalManagement.Room.Doctor;
 
 public class BenhAn implements CoId{
     private String id;

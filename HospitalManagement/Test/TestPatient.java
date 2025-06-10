@@ -1,7 +1,7 @@
 package HospitalManagement.Test;
 
-import HospitalManagement.BenhAn.BenhAn;
 import HospitalManagement.CRUD.ListChung;
+import HospitalManagement.Patientt.BenhAn;
 import HospitalManagement.Patientt.Patient;
 import HospitalManagement.ChucNang.PatientSearch;
 
@@ -43,7 +43,6 @@ public class TestPatient {
     public ListChung<Patient> getPatientList() {
         return patientList;
     }
-
     public void addPatient() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);

@@ -1,7 +1,7 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Room.Room;
+import HospitalManagement.Patientt.Room;
 
 import java.util.Scanner;
 
@@ -13,7 +13,6 @@ public class TestRoom {
         dsRoom.setHienThongBao(false);
         dsMauRoom();
     }
-
     public void dsMauRoom() {
         dsRoom.them(new Room("R01", "Phòng khám Nội", "D01", "BS.Nguyễn Văn Anh"));
         dsRoom.them(new Room("R02", "Phòng khám Ngoại", "D02", "Bs.Trần Thị Bình"));
@@ -21,10 +20,8 @@ public class TestRoom {
         dsRoom.them(new Room("R04", "Phòng khám Tai mũi họng", "D04", "BS.Trần Văn Dũng"));
         dsRoom.them(new Room("R05", "Phòng khám Chụp XQ", "D05", "BS.Trịnh Văn An"));
     }
-
     public void hienThiDanhSach() {
         System.out.println("=== DANH SÁCH PHÒNG KHÁM ===");
-
         for (Room r : dsRoom.getList()) {
             System.out.printf("Mã phòng: %s | Tên phòng: %s | Bác sĩ phụ trách: %s\n",
                     r.getId(), r.getName(), r.getDoctorName());

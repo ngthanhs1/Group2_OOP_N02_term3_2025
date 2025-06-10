@@ -1,4 +1,4 @@
-package HospitalManagement.Room;
+package HospitalManagement.Patientt;
 
 import HospitalManagement.CRUD.CoId;
 

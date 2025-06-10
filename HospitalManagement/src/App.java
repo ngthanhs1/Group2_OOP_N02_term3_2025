@@ -2,7 +2,6 @@ package HospitalManagement.src;
 
 import HospitalManagement.Test.TestBenhan;
 import HospitalManagement.Test.TestPatient;
-//import HospitalManagement.Test.TestSchedule;
 import HospitalManagement.Test.TestSchedule;
 
 public class App {

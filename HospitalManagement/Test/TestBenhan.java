@@ -1,9 +1,9 @@
 package HospitalManagement.Test;
 
-import HospitalManagement.BenhAn.BenhAn;
-import HospitalManagement.Room.Room;
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.ChucNang.InPatientTrongNgay;
+import HospitalManagement.Patientt.BenhAn;
+import HospitalManagement.Patientt.Room;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -91,7 +91,6 @@ public class TestBenhan {
             dsBenhan.them(ba);
         }
     }
-
     public void inBenhan() {
         System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
         System.out.printf("%-5s | %-5s | %-5s | %-18s | %-12s | %-12s | %-12s | %-12s\n",

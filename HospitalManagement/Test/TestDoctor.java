@@ -1,7 +1,7 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Room.Doctor;
+import HospitalManagement.Patientt.Doctor;
 
 import java.util.Scanner;
 

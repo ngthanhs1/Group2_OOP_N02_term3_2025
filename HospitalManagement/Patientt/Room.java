@@ -1,4 +1,4 @@
-package HospitalManagement.Room;
+package HospitalManagement.Patientt;
 
 import HospitalManagement.CRUD.CoId;
 
@@ -43,7 +43,6 @@ public class Room implements CoId {
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
     }
-
     @Override
     public String toString() {
         return String.format(

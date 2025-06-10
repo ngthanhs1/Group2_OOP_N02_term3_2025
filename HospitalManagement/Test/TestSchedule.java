@@ -1,8 +1,8 @@
 package HospitalManagement.Test;
 
-import HospitalManagement.Schedule.Schedule;
-import HospitalManagement.BenhAn.BenhAn;
+import HospitalManagement.Patientt.BenhAn;
 import HospitalManagement.Patientt.Patient;
+import HospitalManagement.Patientt.Schedule;
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.ChucNang.LichCapThuoc;
 import HospitalManagement.Test.TestBenhan;
