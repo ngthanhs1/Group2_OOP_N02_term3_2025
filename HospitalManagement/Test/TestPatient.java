@@ -1,9 +1,9 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Patientt.BenhAn;
-import HospitalManagement.Patientt.Patient;
 import HospitalManagement.ChucNang.PatientSearch;
+import HospitalManagement.Model.BenhAn;
+import HospitalManagement.Model.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,7 +37,6 @@ public class TestPatient {
         }
 
         daThemMau = true;
-        //System.out.println("__Danh sách bệnh nhân__");
     }
 
     public ListChung<Patient> getPatientList() {

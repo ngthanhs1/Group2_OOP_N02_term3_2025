@@ -1,7 +1,7 @@
 package HospitalManagement.Test;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Patientt.Room;
+import HospitalManagement.Model.Room;
 
 import java.util.Scanner;
 
@@ -14,11 +14,11 @@ public class TestRoom {
         dsMauRoom();
     }
     public void dsMauRoom() {
-        dsRoom.them(new Room("R01", "Phòng khám Nội", "D01", "BS.Nguyễn Văn Anh"));
-        dsRoom.them(new Room("R02", "Phòng khám Ngoại", "D02", "Bs.Trần Thị Bình"));
-        dsRoom.them(new Room("R03", "Phòng khám Da liễu", "D03", "BS.Lê Văn Cương"));
-        dsRoom.them(new Room("R04", "Phòng khám Tai mũi họng", "D04", "BS.Trần Văn Dũng"));
-        dsRoom.them(new Room("R05", "Phòng khám Chụp XQ", "D05", "BS.Trịnh Văn An"));
+        dsRoom.them(new Room("R01", "Phòng khám 1", "BS.Nguyễn Văn Anh"));
+        dsRoom.them(new Room("R02", "Phòng khám 2", "Bs.Trần Thị Bình"));
+        dsRoom.them(new Room("R03", "Phòng khám 3", "BS.Lê Văn Cương"));
+        dsRoom.them(new Room("R04", "Phòng khám 4", "BS.Trần Văn Dũng"));
+        dsRoom.them(new Room("R05", "Phòng khám 5", "BS.Trịnh Văn An"));
     }
     public void hienThiDanhSach() {
         System.out.println("=== DANH SÁCH PHÒNG KHÁM ===");

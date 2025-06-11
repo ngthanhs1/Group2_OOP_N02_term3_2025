@@ -1,8 +1,8 @@
 package HospitalManagement.ChucNang;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Patientt.BenhAn;
-import HospitalManagement.Patientt.Patient;
+import HospitalManagement.Model.BenhAn;
+import HospitalManagement.Model.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

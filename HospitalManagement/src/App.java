@@ -14,10 +14,6 @@ public class App {
     tpt.dsMauPatient();
     tpt.inPatient();
     tpt.timKiemPatient();
-    // tpt.addPatient();
-    // tpt.updatePatient();
-    // tpt.deletePatient();
-    // tpt.timKiemPatient();
     TestBenhan tba = new TestBenhan();
     tba.themBenhan();
     tba.inBenhan();

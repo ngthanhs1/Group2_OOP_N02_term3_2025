@@ -1,7 +1,7 @@
 package HospitalManagement.ChucNang;
 
 import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Patientt.Schedule;
+import HospitalManagement.Model.Schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

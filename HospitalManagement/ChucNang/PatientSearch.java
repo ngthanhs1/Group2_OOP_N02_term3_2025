@@ -3,7 +3,8 @@ package HospitalManagement.ChucNang;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
-import HospitalManagement.Patientt.Patient;
+
+import HospitalManagement.Model.Patient;
 
 public class PatientSearch {
     public List<Patient> searchByAnyField(List<Patient> patients, String keywordToFind){

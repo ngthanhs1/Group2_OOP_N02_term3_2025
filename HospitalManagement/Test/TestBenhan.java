@@ -2,8 +2,8 @@ package HospitalManagement.Test;
 
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.ChucNang.InPatientTrongNgay;
-import HospitalManagement.Patientt.BenhAn;
-import HospitalManagement.Patientt.Room;
+import HospitalManagement.Model.BenhAn;
+import HospitalManagement.Model.Room;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -12,20 +12,14 @@ public class TestBenhan {
     private static final Scanner sc = new Scanner(System.in);
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     private static final ListChung<BenhAn> dsBenhan = new ListChung<>();
-
-    private static final TestDoctor testDoctor = new TestDoctor();
     private static final TestRoom testRoom = new TestRoom();
     private static final TestPatient testPatient = new TestPatient();
 
     static {
         sdf.setLenient(false);
         dsBenhan.setHienThongBao(false);
-
-        testDoctor.dsDoctor();
         testRoom.dsMauRoom();
         testPatient.dsMauPatient();
-
-        BenhAn.setDoctorList(testDoctor.getDoctorList().getList());
     }
 
     public void themBenhan() {
@@ -63,7 +57,7 @@ public class TestBenhan {
 
             Room roomRandom = dsRoom.get(new Random().nextInt(dsRoom.size()));
             String roomId = roomRandom.getId();
-            String doctorId = roomRandom.getDoctorId();
+            String doctorId = roomRandom.getDoctorName();
 
             System.out.println("Phòng khám được gán: " + roomRandom.getName());
             System.out.println("Bác sĩ phụ trách: " + roomRandom.getDoctorName());
@@ -87,20 +81,24 @@ public class TestBenhan {
             System.out.print("Nhập chẩn đoán: ");
             String chanDoan = sc.nextLine().trim();
 
-            BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSu, chanDoan, doctorId, roomId);
+            BenhAn ba = new BenhAn(id, patientId, ngayKham, trieuChung, tienSu, chanDoan, roomId);
             dsBenhan.them(ba);
         }
     }
     public void inBenhan() {
-        System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
-        System.out.printf("%-5s | %-5s | %-5s | %-18s | %-12s | %-12s | %-12s | %-12s\n",
-                "Mã BA", "Mã BN", "Phòng", "Bác sĩ", "Ngày khám", "Triệu chứng", "Tiền sử bệnh", "Chẩn đoán");
-        System.out.println("----------------------------------------------------------------------------------------------------------");
-        for (BenhAn ba : dsBenhan.getList()) {
-            System.out.println(ba);
+    System.out.println("\n=== DANH SÁCH BỆNH ÁN ===");
+    System.out.printf("%-5s | %-5s | %-10s | %-20s | %-12s | %-15s | %-15s | %-15s\n",
+            "Mã BA", "Mã BN", "Phòng", "Bác sĩ", "Ngày khám", "Triệu chứng", "Tiền sử bệnh", "Chẩn đoán");
+    System.out.println("-----------------------------------------------------------------------------------------------------------------------");
+
+    for (BenhAn ba : dsBenhan.getList()) {
+        Room room = testRoom.getRoomList().timKiem(ba.getRoomId());
+        String tenBacSi = (room != null) ? room.getDoctorName() : "Không rõ";
+        String tenPhong = (room != null) ? room.getName() : "Không rõ";
+        System.out.printf("%-5s | %-5s | %-10s | %-20s | %-12s | %-15s | %-15s | %-15s\n",
+                ba.getId(),ba.getPatientId(),tenPhong,tenBacSi,sdf.format(ba.getNgayKham().getTime()),ba.getTrieuChung(),ba.getTienSuBenh(),ba.getChanDoan());
         }
     }
-
     public ListChung<BenhAn> getBenhanList() {
         return dsBenhan;
     }

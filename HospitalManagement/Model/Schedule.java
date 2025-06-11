@@ -1,4 +1,4 @@
-package HospitalManagement.Patientt;
+package HospitalManagement.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

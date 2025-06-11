@@ -1,21 +1,17 @@
-package HospitalManagement.Patientt;
+package HospitalManagement.Model;
 
 import HospitalManagement.CRUD.CoId;
 
 public class Room implements CoId {
     private String id;
     private String name;
-    private String doctorId;
     private String doctorName;
 
-    public Room(String id, String name, String doctorId, String doctorName) {
+    public Room(String id, String name, String doctorName) {
         this.id = id;
         this.name = name;
-        this.doctorId = doctorId;
         this.doctorName = doctorName;
     }
-
-    // Getter & Setter
     public String getId() {
         return id;
     }
@@ -30,13 +26,6 @@ public class Room implements CoId {
         this.name = name;
     }
 
-    public String getDoctorId() {
-        return doctorId;
-    }
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
-    }
-
     public String getDoctorName() {
         return doctorName;
     }
@@ -46,8 +35,7 @@ public class Room implements CoId {
     @Override
     public String toString() {
         return String.format(
-            "Mã phòng: %s | Tên phòng: %s\nBác sĩ phụ trách: %s (%s)",
-            id, name, doctorName, doctorId
-        );
+            "Mã phòng: %s | Tên phòng: %s\nBác sĩ phụ trách: %s ",
+            id, name, doctorName);
     }
 }

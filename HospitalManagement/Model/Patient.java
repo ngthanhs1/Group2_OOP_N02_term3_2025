@@ -1,4 +1,4 @@
-package HospitalManagement.Patientt;
+package HospitalManagement.Model;
 
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -55,8 +55,6 @@ public class Patient implements CoId {
     private int calculateAge(Calendar dob) {
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
-
-        // Nếu tháng hiện tại nhỏ hơn tháng sinh hoặc cùng tháng nhưng chưa đến ngày thì trừ đi 1
         if (now.get(Calendar.MONTH) < dob.get(Calendar.MONTH) || 
             (now.get(Calendar.MONTH) == dob.get(Calendar.MONTH) && now.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH))) {
             year--;
