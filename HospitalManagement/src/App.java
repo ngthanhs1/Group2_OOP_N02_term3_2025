@@ -17,9 +17,5 @@ public class App {
     TestBenhan tba = new TestBenhan();
     tba.themBenhan();
     tba.inBenhan();
-    TestSchedule ts = new TestSchedule(tpt, tba);
-    ts.themSchedule();
-    ts.inSchedule();
-    ts.inCapThuocTrongNgay();
   }
 }
