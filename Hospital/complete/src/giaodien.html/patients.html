@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quản lý Bệnh Nhân</title>
+  <link rel="stylesheet" href="patients.css">
+</head>
+<body>
+  <div class="patient-container">
+    <h2>Quản lý bệnh nhân</h2>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Quay lại </button>
+    
+    <form id="patient-form">
+      <input type="text" id="patientId" placeholder="Mã bệnh nhân" required />
+      <input type="text" id="name" placeholder="Họ và tên" required />
+      <input type="number" id="age" placeholder="Tuổi" required />
+      <select id="gender" required>
+        <option value="">--Giới tính--</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+      <input type="text" id="address" placeholder="Địa chỉ" required />
+      <input type="text" id="phone" placeholder="Số điện thoại" required />
+      <input type="date" id="dob" placeholder="Ngày sinh" required />
+      <button type="submit">Thêm / Cập nhật</button>
+    </form>
+
+    <input type="text" id="search" placeholder="Tìm kiếm theo tên..." />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mã BN</th>
+          <th>Họ tên</th>
+          <th>Tuổi</th>
+          <th>Giới tính</th>
+          <th>Địa chỉ</th>
+          <th>Điện thoại</th>
+          <th>Ngày sinh</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="patient-list"></tbody>
+    </table>
+  </div>
+
+  <script src="patients.js"></script>
+</body>
+</html>
