@@ -1,4 +1,4 @@
-package com.example.springboot.test;
+package com.example.springboot;
 
 import com.example.springboot.CRUD.ListChung;
 import com.example.springboot.ChucNang.InPatientTrongNgay;

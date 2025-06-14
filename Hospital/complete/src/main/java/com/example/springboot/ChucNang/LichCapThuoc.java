@@ -5,6 +5,7 @@ import com.example.springboot.Model.Schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Scanner;
 
 public class LichCapThuoc {
 
@@ -20,7 +21,7 @@ public class LichCapThuoc {
             return;
         }
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scv = new Scanner(System.in);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
         Calendar searchDate = null;
@@ -28,7 +29,7 @@ public class LichCapThuoc {
         while (searchDate == null) {
             try {
                 System.out.print("Nhập ngày cần in cấp thuốc (dd/MM/yyyy): ");
-                Date d = sdf.parse(sc.nextLine().trim());
+                Date d = sdf.parse(scv.nextLine().trim());
                 searchDate = Calendar.getInstance();
                 searchDate.setTime(d);
             } catch (Exception e) {
