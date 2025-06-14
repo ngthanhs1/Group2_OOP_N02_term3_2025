@@ -1,9 +1,8 @@
-z
+package com.example.springboot.Model;
 
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
-
-import HospitalManagement.CRUD.CoId;
+import com.example.springboot.CRUD.CoId;
 
 public class Patient implements CoId {
     private String id;

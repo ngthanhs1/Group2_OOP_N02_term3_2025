@@ -1,6 +1,4 @@
-package springboot;
-
-import java.util.Arrays;
+package com.example.springboot;
 
 
 public class Application {

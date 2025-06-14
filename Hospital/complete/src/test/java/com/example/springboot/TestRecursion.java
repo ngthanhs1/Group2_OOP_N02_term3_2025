@@ -1,4 +1,4 @@
-package HospitalManagement.Test;
+package com.example.springboot;
 
 public class TestRecursion {
     

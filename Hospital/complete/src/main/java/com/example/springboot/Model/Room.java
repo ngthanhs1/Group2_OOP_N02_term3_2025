@@ -1,5 +1,6 @@
-package springboot.Model;
+package com.example.springboot.Model;
 
+import com.example.springboot.CRUD.CoId;
 
 public class Room implements CoId {
     private String id;

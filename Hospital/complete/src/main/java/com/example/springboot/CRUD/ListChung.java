@@ -1,7 +1,8 @@
-package springboot.CRUD;
-
+package com.example.springboot.CRUD;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+
 
 public class ListChung<T extends CoId> implements Iterable<T> {
     private ArrayList<T> danhSach = new ArrayList<>();

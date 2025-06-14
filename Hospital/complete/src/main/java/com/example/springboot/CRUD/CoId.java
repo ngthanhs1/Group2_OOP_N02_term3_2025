@@ -1,4 +1,5 @@
-package springboot.CRUD;
+package com.example.springboot.CRUD;
+
 
 public interface CoId {
     String getId();

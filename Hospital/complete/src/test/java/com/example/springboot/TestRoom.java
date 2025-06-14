@@ -1,7 +1,7 @@
-package HospitalManagement.Test;
+package com.example.springboot;
 
-import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Model.Room;
+import com.example.springboot.CRUD.ListChung;
+import com.example.springboot.Model.Room;
 
 import java.util.Scanner;
 

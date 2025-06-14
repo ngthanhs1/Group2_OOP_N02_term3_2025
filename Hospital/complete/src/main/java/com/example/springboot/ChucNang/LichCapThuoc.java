@@ -1,7 +1,7 @@
-package springboot.ChucNang;
+package com.example.springboot.ChucNang;
 
-import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Model.Schedule;
+import com.example.springboot.CRUD.ListChung;
+import com.example.springboot.Model.Schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

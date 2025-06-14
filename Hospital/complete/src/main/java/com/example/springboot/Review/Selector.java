@@ -1,4 +1,4 @@
-package springboot.Review;
+package com.example.springboot.Review;
 
 public interface Selector {
     boolean end();

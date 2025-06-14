@@ -1,10 +1,9 @@
-package springboot.Model;
 
-import java.text.SimpleDateFormat;
+package com.example.springboot.Model;
+
 import java.util.Calendar;
-import java.util.List;
-
-import HospitalManagement.CRUD.CoId;
+import java.text.SimpleDateFormat;
+import com.example.springboot.CRUD.CoId;
 
 public class BenhAn implements CoId{
     private String id;

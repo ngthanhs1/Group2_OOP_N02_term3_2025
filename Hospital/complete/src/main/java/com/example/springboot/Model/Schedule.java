@@ -1,9 +1,8 @@
-package springboot.Model;
+package com.example.springboot.Model;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
-import HospitalManagement.CRUD.CoId;
+import java.text.SimpleDateFormat;
+import com.example.springboot.CRUD.CoId;
 
 
 public class Schedule implements CoId{

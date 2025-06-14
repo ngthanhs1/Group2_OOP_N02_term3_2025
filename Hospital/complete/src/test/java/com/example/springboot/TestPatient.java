@@ -1,9 +1,9 @@
-package HospitalManagement.Test;
+package com.example.springboot;
 
-import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.ChucNang.PatientSearch;
-import HospitalManagement.Model.BenhAn;
-import HospitalManagement.Model.Patient;
+import com.example.springboot.CRUD.ListChung;
+import com.example.springboot.ChucNang.PatientSearch;
+import com.example.springboot.Model.BenhAn;
+import com.example.springboot.Model.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

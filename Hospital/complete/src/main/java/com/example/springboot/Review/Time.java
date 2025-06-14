@@ -1,4 +1,4 @@
-package springboot.Review;
+package com.example.springboot.Review;
 
 public class Time {
     private int hour;

@@ -1,8 +1,8 @@
-package springboot.ChucNang;
+package com.example.springboot.ChucNang;
 
-import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.Model.BenhAn;
-import HospitalManagement.Model.Patient;
+import com.example.springboot.CRUD.ListChung;
+import com.example.springboot.Model.BenhAn;
+import com.example.springboot.Model.Patient;
 
 import java.text.SimpleDateFormat;
 import java.util.*;

@@ -1,10 +1,11 @@
-package springboot.ChucNang;
+package com.example.springboot.ChucNang;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import HospitalManagement.Model.Patient;
+import com.example.springboot.Model.Patient;
+
 
 public class PatientSearch {
     public List<Patient> searchByAnyField(List<Patient> patients, String keywordToFind){
