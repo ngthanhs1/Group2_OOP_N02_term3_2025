@@ -1,12 +1,13 @@
-package HospitalManagement.Test;
+package com.example.springboot.test;
 
-import HospitalManagement.CRUD.ListChung;
-import HospitalManagement.ChucNang.LichCapThuoc;
-import HospitalManagement.Model.BenhAn;
-import HospitalManagement.Model.Patient;
-import HospitalManagement.Model.Schedule;
-import HospitalManagement.Test.TestBenhan;
-import HospitalManagement.Test.TestPatient;
+import com.example.springboot.CRUD.ListChung;
+import com.example.springboot.Model.BenhAn;
+import com.example.springboot.Model.Patient;
+import com.example.springboot.Model.Schedule;
+import com.example.springboot.TestPatient;
+import com.example.springboot.TestRoom;
+import com.example.springboot.TestBenhan;
+import com.example.springboot.ChucNang.LichCapThuoc;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
