@@ -1,4 +1,4 @@
-package HospitalManagement.CRUD;
+package springboot.CRUD;
 
 public interface CoId {
     String getId();

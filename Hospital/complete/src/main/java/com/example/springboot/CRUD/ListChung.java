@@ -1,4 +1,4 @@
-package HospitalManagement.CRUD;
+package springboot.CRUD;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package HospitalManagement.CRUD;
+package springboot.CRUD;
 /* package HospitalManagement.Schedule;
 import java.util.ArrayList;
 

@@ -1,6 +1,5 @@
-package HospitalManagement.Model;
+package springboot.Model;
 
-import HospitalManagement.CRUD.CoId;
 
 public class Room implements CoId {
     private String id;

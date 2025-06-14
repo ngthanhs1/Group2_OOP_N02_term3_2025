@@ -1,4 +1,4 @@
-package HospitalManagement.ChucNang;
+package springboot.ChucNang;
 
 import java.text.SimpleDateFormat;
 import java.util.List;

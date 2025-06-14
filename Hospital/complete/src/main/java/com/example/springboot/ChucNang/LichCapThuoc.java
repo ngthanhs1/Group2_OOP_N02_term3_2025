@@ -1,4 +1,4 @@
-package HospitalManagement.ChucNang;
+package springboot.ChucNang;
 
 import HospitalManagement.CRUD.ListChung;
 import HospitalManagement.Model.Schedule;

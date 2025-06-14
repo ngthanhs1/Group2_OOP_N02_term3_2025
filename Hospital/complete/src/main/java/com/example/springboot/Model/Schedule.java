@@ -1,4 +1,4 @@
-package HospitalManagement.Model;
+package springboot.Model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

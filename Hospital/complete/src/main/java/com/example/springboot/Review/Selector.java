@@ -1,4 +1,4 @@
-package HospitalManagement.Review;
+package springboot.Review;
 
 public interface Selector {
     boolean end();
