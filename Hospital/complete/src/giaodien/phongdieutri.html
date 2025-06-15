@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý Phòng điều trị</title>
+  <link rel="stylesheet" href="phongdieutri.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Quản lý Phòng Điều Trị</h2>
+    <button class="back-btn" onclick="window.location.href='dashboard.html'">← Quay lại</button>
+
+    <form id="phong-form">
+      <input type="text" id="maPhong" placeholder="Mã phòng" required />
+      <input type="text" id="tenPhong" placeholder="Tên phòng" required />
+      <input type="text" id="bacSi" placeholder="Tên bác sĩ điều trị" required />
+      <button type="submit">Thêm / Cập nhật</button>
+    </form>
+
+    <input type="text" id="search" placeholder="Tìm kiếm mã hoặc tên phòng..." />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mã phòng</th>
+          <th>Tên phòng</th>
+          <th>Bác sĩ điều trị</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="phong-list"></tbody>
+    </table>
+  </div>
+
+  <script src="phongdieutri.js"></script>
+</body>
+</html>

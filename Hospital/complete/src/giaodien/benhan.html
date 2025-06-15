@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quản lý Bệnh Án</title>
+  <link rel="stylesheet" href="benhan.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Quản lý Bệnh Án</h2>
+    <button onclick="window.location.href='dashboard.html'" class="back-btn">← Quay lại</button>
+
+    <form id="benhan-form">
+      <input type="text" id="maBenhAn" placeholder="Mã bệnh án" required />
+      <input type="text" id="maBenhNhan" placeholder="Mã bệnh nhân" required />
+      <input type="date" id="ngayKham" required />
+      <input type="text" id="trieuChung" placeholder="Triệu chứng" required />
+      <input type="text" id="tienSuBenh" placeholder="Tiền sử bệnh" required />
+      <input type="text" id="maPhong" placeholder="Mã phòng" required />
+      <button type="submit">Thêm / Cập nhật</button>
+    </form>
+
+    <input type="text" id="searchBenhAn" placeholder="Tìm theo mã bệnh án hoặc mã BN..." />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mã bệnh án</th>
+          <th>Mã BN</th>
+          <th>Ngày khám</th>
+          <th>Triệu chứng</th>
+          <th>Tiền sử bệnh</th>
+          <th>Mã phòng</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="benhan-list"></tbody>
+    </table>
+  </div>
+
+  <script src="benhan.js"></script>
+</body>
+</html>
