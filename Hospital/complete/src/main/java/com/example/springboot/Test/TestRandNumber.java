@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.springboot.Test;
 
 import java.util.Random;
 

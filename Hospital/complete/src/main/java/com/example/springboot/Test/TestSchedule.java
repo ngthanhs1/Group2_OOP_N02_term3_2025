@@ -1,12 +1,9 @@
-package com.example.springboot;
+package com.example.springboot.Test;
 
 import com.example.springboot.CRUD.ListChung;
 import com.example.springboot.Model.BenhAn;
 import com.example.springboot.Model.Patient;
 import com.example.springboot.Model.Schedule;
-import com.example.springboot.TestPatient;
-import com.example.springboot.TestRoom;
-import com.example.springboot.TestBenhan;
 import com.example.springboot.ChucNang.LichCapThuoc;
 
 import java.text.SimpleDateFormat;
@@ -27,51 +24,51 @@ public class TestSchedule {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setLenient(false);
 
-        System.out.print("Nhập số lượng lịch cấp thuốc cần thêm: ");
+        System.out.print("Nhap so luong lich cap thuoc can them: ");
         int n = Integer.parseInt(sc.nextLine());
 
         for (int i = 0; i < n;) {
-            System.out.println("\n_Nhập thông tin lịch cấp thuốc thứ " + (i + 1) + ":");
+            System.out.println("\n_Nhap thong tin lich cap thuoc thu " + (i + 1) + ":");
 
-            System.out.print("Mã schedule: ");
+            System.out.print("Ma schedule: ");
             String id = sc.nextLine();
             if (dsSchedule.timKiem(id) != null) {
-                System.out.println("Mã schedule đã tồn tại. Vui lòng nhập mã khác.");
+                System.out.println("Ma schedule da ton tai. Vui long nhap ma khac.");
                 continue;
             }
 
-            System.out.print("Mã bệnh án: ");
+            System.out.print("Ma benh an: ");
             String benhanId = sc.nextLine();
             BenhAn benhAn = dsBenhan.timKiem(benhanId);
             if (benhAn == null) {
-                System.out.println("Không tìm thấy bệnh án có mã: " + benhanId);
+                System.out.println("Khong tim thay benh an co ma: " + benhanId);
                 continue;
             }
 
             String patientId = benhAn.getPatientId();
-            System.out.println("→ Mã bệnh nhân: " + patientId);
+            System.out.println("-> Ma benh nhan: " + patientId);
 
             Calendar date = null;
             while (date == null) {
                 try {
-                    System.out.print("Ngày cấp thuốc (dd/MM/yyyy): ");
+                    System.out.print("Ngay cap thuoc (dd/MM/yyyy): ");
                     Date d = sdf.parse(sc.nextLine().trim());
                     date = Calendar.getInstance();
                     date.setTime(d);
                 } catch (Exception e) {
-                    System.out.println("Ngày không hợp lệ, vui lòng nhập lại.");
+                    System.out.println("Ngay khong hop le, vui long nhap lai.");
                 }
             }
 
-            System.out.print("Tên thuốc: ");
+            System.out.print("Ten thuoc: ");
             String tenthuoc = sc.nextLine();
 
-            System.out.print("Số lượng: ");
+            System.out.print("So luong: ");
             String soluong = sc.nextLine();
 
             Schedule s = new Schedule(id, benhanId, patientId, date, tenthuoc, soluong);
             dsSchedule.them(s);
-            System.out.println("→ Đã thêm lịch cấp thuốc thành công!");
+            System.out.println("-> Da them lich cap thuoc thanh cong!");
             i++;
         }
     }
@@ -136,6 +133,38 @@ public class TestSchedule {
 
         System.out.println("→ Đã cập nhật thành công. Danh sách sau khi sửa:");
         dsSchedule.inDanhSach();
+    }
+
+    public void timKiemSchedule() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap tu khoa tim kiem (ma schedule, ma benh an, ma benh nhan, ten thuoc...): ");
+        String keyword = sc.nextLine().toLowerCase();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        List<Schedule> ketQua = new ArrayList<>();
+        for (Schedule s : dsSchedule.getList()) {
+            if (s.getId().toLowerCase().contains(keyword)
+                || s.getBenhanId().toLowerCase().contains(keyword)
+                || s.getPatientId().toLowerCase().contains(keyword)
+                || s.getTenthuoc().toLowerCase().contains(keyword)
+                || s.getSoluong().toLowerCase().contains(keyword)
+                || sdf.format(s.getDate().getTime()).contains(keyword)
+            ) {
+                ketQua.add(s);
+            }
+        }
+        if (ketQua.isEmpty()) {
+            System.out.println("Khong tim thay lich cap thuoc.");
+        } else {
+            System.out.println("__Ket qua tim kiem lich cap thuoc__:");
+            System.out.printf("%-8s | %-8s | %-8s | %-15s | %-10s | %-13s\n",
+                    "Ma BT", "Ma BA", "Ma BN", "Ngay cap", "Ten thuoc", "So luong(vien)");
+            System.out.println("-----------------------------------------------------------------------------------");
+            for (Schedule s : ketQua) {
+                System.out.printf("%-8s | %-8s | %-8s | %-15s | %-10s | %-13s\n",
+                    s.getId(), s.getBenhanId(), s.getPatientId(),
+                    sdf.format(s.getDate().getTime()), s.getTenthuoc(), s.getSoluong());
+            }
+        }
     }
 
     public ListChung<Schedule> getDsSchedule() {
