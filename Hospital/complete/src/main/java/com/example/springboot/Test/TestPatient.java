@@ -13,8 +13,8 @@ public class TestPatient {
     private static boolean daThemMau = false;
 
     private static final Object[][] data = {
-        {"BN001", "Nguyễn Văn Thành", 2005, Calendar.MARCH, 19, "Nam", "Hà Nội", "0123456789"},
-        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nữ", "Vĩnh Phúc", "0987654321"},
+        {"BN001", "Nguyen Van Thanh", 2005, Calendar.MARCH, 19, "Nam", "Ha Noi", "0123456789"},
+        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nu", "Vinh Phuc", "0987654321"},
         {"BN003", "Lê Hoàng Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333"}
     };
 
