@@ -8,6 +8,6 @@ public class TestNeverCaught {
     }
 
     public static void main(String[] args) {
-        f(); // Line 11
+        f(); 
     }
 }
