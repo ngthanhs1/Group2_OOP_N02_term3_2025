@@ -4,7 +4,6 @@ import com.example.springboot.CRUD.ListChung;
 import com.example.springboot.Model.BenhAn;
 import com.example.springboot.Model.Patient;
 import com.example.springboot.Model.Schedule;
-import com.example.springboot.ChucNang.LichCapThuoc;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -170,9 +169,5 @@ public class TestSchedule {
     public ListChung<Schedule> getDsSchedule() {
         return dsSchedule;
     }
-    public void inCapThuocTrongNgay() {
-    LichCapThuoc inTheoNgay = new LichCapThuoc(dsSchedule);
-    inTheoNgay.inTheoNgay();
-}
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @Controller
-public class userController {
+public class loginController {
     @GetMapping("/index")
     public String getuser(Model model) {
         

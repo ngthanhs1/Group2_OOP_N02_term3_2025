@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('asset/patient.jpg'); /* Đảm bảo asset/patient.jpg nằm trong static */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 40px;
+}

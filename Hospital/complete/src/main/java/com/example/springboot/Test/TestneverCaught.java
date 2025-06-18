@@ -1,13 +1,13 @@
-public class TestNeverCaught {
-    static void g() {
-        throw new RuntimeException("From g()"); 
-    }
+// public class TestNeverCaught {
+//     static void g() {
+//         throw new RuntimeException("From g()"); 
+//     }
 
-    static void f() {
-        g(); 
-    }
+//     static void f() {
+//         g(); 
+//     }
 
-    public static void main(String[] args) {
-        f(); 
-    }
-}
+//     public static void main(String[] args) {
+//         f(); 
+//     }
+// }
