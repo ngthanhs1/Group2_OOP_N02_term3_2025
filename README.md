@@ -24,3 +24,5 @@ Yêu cầu chính:
 ### 2.UML Sequence Diagram
 <img src ="img/Lưu đồ chức năng.png">
 
+#### 1.Findpatitent
+<img src =""
