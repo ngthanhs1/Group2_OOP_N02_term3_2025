@@ -15,12 +15,12 @@ function renderPatients(data) {
   data.forEach((p, index) => {
     list.innerHTML += `
       <tr>
-        <td>${p.id}</td>
-        <td>${p.name}</td>
-        <td>${p.age}</td>
-        <td>${p.gender}</td>
-        <td>${p.address}</td>
-        <td>${p.phone}</td>
+        <td>${p.id || ""}</td>
+        <td>${p.name || ""}</td>
+        <td>${p.age || ""}</td>
+        <td>${p.gender || ""}</td>
+        <td>${p.address || ""}</td>
+        <td>${p.phone || ""}</td>
         <td>${p.dob ? formatDate(p.dob) : ""}</td>
         <td>
           <!-- Nút sửa/xóa sẽ làm sau -->
@@ -31,7 +31,6 @@ function renderPatients(data) {
 }
 
 function formatDate(dob) {
-  // dob có thể là chuỗi hoặc object, tùy backend trả về
   const d = new Date(dob);
   return d.toLocaleDateString('vi-VN');
 }
@@ -49,7 +48,6 @@ form.addEventListener("submit", async function (e) {
 
   if (!id || !name || !age || !gender || !address || !phone || !dob) return;
 
-  // Gửi dữ liệu lên API (cần viết API POST ở backend)
   await fetch('/api/patients', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -62,7 +60,7 @@ form.addEventListener("submit", async function (e) {
 
 searchInput.addEventListener("input", function () {
   const keyword = this.value.toLowerCase();
-  const filtered = patients.filter(p => p.name.toLowerCase().includes(keyword));
+  const filtered = patients.filter(p => p.name && p.name.toLowerCase().includes(keyword));
   renderPatients(filtered);
 });
 
