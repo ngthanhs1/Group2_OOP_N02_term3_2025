@@ -25,4 +25,4 @@ Yêu cầu chính:
 <img src ="img/Lưu đồ chức năng.png">
 
 #### 1.Findpatitent
-<img src =""
+<img src ="img/Findpatitent.png">
