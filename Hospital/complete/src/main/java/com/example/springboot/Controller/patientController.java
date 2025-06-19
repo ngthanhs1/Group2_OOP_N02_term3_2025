@@ -1,24 +1,23 @@
+// Controller: com.example.springboot.Controller.patientController.java
 package com.example.springboot.Controller;
 
 import com.example.springboot.Model.Patient;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.ArrayList;
+import com.example.springboot.database.patientAiven;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@RestController
-@RequestMapping("/api/patients")
+import java.util.List;
+
+@Controller
 public class patientController {
 
-    private static List<Patient> cache = new ArrayList<>();
+    private final patientAiven patientDb = new patientAiven();
 
-    @GetMapping
-    public List<Patient> getAllPatients() {
-        return cache;
-    }
-
-    @PostMapping
-    public Patient addPatient(@RequestBody Patient patient) {
-        cache.add(patient);
-        return patient;
+    @GetMapping("/patients")
+    public String getPatients(Model model) {
+        List<Patient> patients = patientDb.getPatientList();
+        model.addAttribute("patients", patients);
+        return "patients"; // Trả về file templates/patients.html
     }
 }

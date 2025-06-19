@@ -37,7 +37,21 @@
           <th>Hành động</th>
         </tr>
       </thead>
-      <tbody id="patient-list"></tbody>
+     <tbody id="patient-list">
+  <tr th:each="patient : ${patients}">
+    <td th:text="${patient.id}"></td>
+    <td th:text="${patient.name}"></td>
+    <td th:text="${#dates.period(patient.dob.time, T(java.util.Calendar).getInstance()).years}"></td>
+    <td th:text="${patient.gender}"></td>
+    <td th:text="${patient.address}"></td>
+    <td th:text="${patient.phone}"></td>
+    <td th:text="${#dates.format(patient.dob.time, 'dd/MM/yyyy')}"></td>
+    <td>
+      <!-- Tuỳ chỉnh thêm nút xoá/sửa nếu cần -->
+    </td>
+  </tr>
+</tbody>
+
     </table>
   </div>
   <script src="patients.js"></script>
