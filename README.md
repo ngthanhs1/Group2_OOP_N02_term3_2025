@@ -34,4 +34,4 @@ Yêu cầu chính:
 <img src ="img/Schedule.png">
 
 #### 4.Room
-<img src ="">
+<img src ="img/Room.png">
