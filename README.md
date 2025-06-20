@@ -28,4 +28,4 @@ Yêu cầu chính:
 <img src ="img/Findpatitent.png">
 
 #### 2.FindBenhan
-<img src ="">
+<img src ="img/FindBenhan.png">
