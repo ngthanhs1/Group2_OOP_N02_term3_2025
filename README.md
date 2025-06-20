@@ -26,3 +26,6 @@ Yêu cầu chính:
 
 #### 1.Findpatitent
 <img src ="img/Findpatitent.png">
+
+#### 2.FindBenhan
+<img src ="">
