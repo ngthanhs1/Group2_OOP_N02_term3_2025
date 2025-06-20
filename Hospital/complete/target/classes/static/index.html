@@ -9,15 +9,37 @@
   <div class="login-container">
     <h2>ĐĂNG NHẬP</h2>
     <input type="text" id="username" placeholder="Tài khoản" />
-    <input type="password" id="password" placeholder="Password" />
+    <input type="password" id="password" placeholder="Mật khẩu" />
     <button onclick="login()">ĐĂNG NHẬP</button>
 
-    <p class="register-text">
-      Bạn chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
-    </p>
-    <a class="forgot-password" href="#">Quên mật khẩu</a>
+    <div id="message" style="margin-top: 10px; font-weight: bold;"></div>
+
+    <p class="register-text">Tài khoản mặc định: <strong>admin / 123456</strong></p>
+    <a class="forgot-password" href="#">Quên mật khẩu?</a>
   </div>
 
-  <script src="login.js"></script>
+  <script>
+    function showMessage(message, color) {
+      const msg = document.getElementById("message");
+      msg.textContent = message;
+      msg.style.color = color;
+    }
+
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "123456") {
+        // Lưu user vào localStorage
+        const user = { username: "admin" };
+        localStorage.setItem("currentUser", JSON.stringify(user));
+
+        alert("Đăng nhập thành công!");
+        window.location.href = "dashboard.html"; // Chuyển trang
+      } else {
+        showMessage("Sai tài khoản hoặc mật khẩu", "red");
+      }
+    }
+  </script>
 </body>
 </html>

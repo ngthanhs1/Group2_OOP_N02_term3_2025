@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -9,13 +8,31 @@
 <body>
   <div class="dashboard-container">
     <h2>HỆ THỐNG QUẢN LÝ BỆNH VIỆN</h2>
+    <div id="welcome" class="welcome-message"></div>
+
     <div class="grid-menu">
       <a href="patients.html" class="card">Bệnh Nhân</a>
       <a href="benhan.html" class="card">Bệnh Án</a>
       <a href="lichcapthuoc.html" class="card">Lịch Cấp Thuốc</a>
       <a href="phongdieutri.html" class="card">Phòng Điều Trị</a>
     </div>
-    <button class="logout-btn" onclick="window.location.href='index.html'">Đăng Xuất</button>
+
+    <button class="logout-btn" onclick="logout()">Đăng Xuất</button>
   </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (!user) {
+      alert("Bạn cần đăng nhập trước.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("welcome").textContent = `Xin chào, ${user.username}!`;
+    }
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
