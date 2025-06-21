@@ -17,7 +17,7 @@ public class userAiven {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                "jdbc:mysql://avnadmin:=@mysql-14737a33-nglthu-4e05.k.aivencloud.com:17237/defaultdb?ssl-mode=REQUIRED",
+                "jdbc:mysql://avnadmin:AVNS_mCYm4qgQ7vdJ-vfVtGb@mysql-2073b098-hospitalll.b.aivencloud.com:16089/defaultdb?ssl-mode=REQUIRED",
                 "sqluser", "password"
             );
             Statement stmt = conn.createStatement();

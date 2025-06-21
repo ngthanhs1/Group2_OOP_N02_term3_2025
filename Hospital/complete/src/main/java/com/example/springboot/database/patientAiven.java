@@ -18,7 +18,7 @@ public class patientAiven {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                "mysql:/efaultdb?ssl-mode=REQUIRED",
+                "jdbc:mysql://avnadmin:AVNS_mCYm4qgQ7vdJ-vfVtGb@mysql-2073b098-hospitalll.b.aivencloud.com:16089/defaultdb?ssl-mode=REQUIRED",
                 "sqluser", "password"
             );
             stmt = conn.createStatement();
