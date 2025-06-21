@@ -1,7 +1,7 @@
 # HỆ THỐNG QUẢN LÝ KHÁM CHỮA BỆNH
 
 ## GIỚI THIỆU DỰ ÁN
-Đây là dự án quản lý Bệnh viện
+Đây là dự án quản lý khám chữa bệnh
 ## Các thành viên trong nhóm
 - **Nguyễn Văn Thành-23010191**:Phát triển phần mềm
 - **Nguyễn Mạnh Quyền-23010198**:Phát triển phần mềm
