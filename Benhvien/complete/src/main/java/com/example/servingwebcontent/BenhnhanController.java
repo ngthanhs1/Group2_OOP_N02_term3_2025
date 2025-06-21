@@ -13,11 +13,11 @@ public class BenhnhanController {
 
  //   private final benhanAiven benhanDb = new benhanAiven();
 
-    @GetMapping("/benhan")
+    @GetMapping("/patients")
     public String getBenhAn(Model model) {
        // List<BenhAn> benhans = benhanDb.getBenhanList();
      ///   model.addAttribute("benhanList", benhans);
-        return "benhan"; // Trả về file templates/benhan.html
+        return "patients"; // Trả về file templates/benhan.html
     }
 }
     
