@@ -1,4 +1,4 @@
-# HỆ THỐNG QUẢN LÝ BỆNH NHÂN KHÁM CHỮA BỆNH
+# HỆ THỐNG QUẢN LÝ KHÁM CHỮA BỆNH
 
 ## GIỚI THIỆU DỰ ÁN
 Đây là dự án quản lý Bệnh viện
