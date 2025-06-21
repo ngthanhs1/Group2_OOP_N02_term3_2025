@@ -1,7 +1,6 @@
 package com.example.springboot.Test;
 
 import com.example.springboot.CRUD.ListChung;
-import com.example.springboot.Model.BenhAn;
 import com.example.springboot.Model.Patient;
 
 import java.text.SimpleDateFormat;
@@ -14,8 +13,8 @@ public class TestPatient {
 
     private static final Object[][] data = {
         {"BN001", "Nguyen Van Thanh", 2005, Calendar.MARCH, 19, "Nam", "Ha Noi", "0123456789"},
-        {"BN002", "Nguyễn Thị Trang", 2006, Calendar.APRIL, 5, "Nu", "Vinh Phuc", "0987654321"},
-        {"BN003", "Lê Hoàng Nam", 1988, Calendar.JULY, 20, "Nam", "Đà Nẵng", "0911222333"}
+        {"BN002", "Nguyễn Thị Trang", 2000, Calendar.APRIL, 5, "Nu", "Ha Noi", "0987654321"},
+        {"BN003", "Le Hoang Nam", 1988, Calendar.JULY, 20, "Nam", "Đa Nang", "0911222333"}
     };
 
     public void dsMauPatient() {

@@ -21,7 +21,7 @@ public class userAiven {
                 "sqluser", "password"
             );
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Users");
 
             while (rs.next()) {
                 String username = rs.getString("username");
