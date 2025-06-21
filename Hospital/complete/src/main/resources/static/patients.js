@@ -1,13 +1,11 @@
-let patients = [];
+let patients = JSON.parse(localStorage.getItem("patients")) || [];
 
 const form = document.getElementById("patient-form");
 const list = document.getElementById("patient-list");
 const searchInput = document.getElementById("search");
 
-async function fetchPatients() {
-  const res = await fetch('/api/patients');
-  patients = await res.json();
-  renderPatients(patients);
+function savePatients() {
+  localStorage.setItem("patients", JSON.stringify(patients));
 }
 
 function renderPatients(data) {
@@ -15,16 +13,14 @@ function renderPatients(data) {
   data.forEach((p, index) => {
     list.innerHTML += `
       <tr>
-        <td>${p.id || ""}</td>
-        <td>${p.name || ""}</td>
-        <td>${p.age || ""}</td>
-        <td>${p.gender || ""}</td>
-        <td>${p.address || ""}</td>
-        <td>${p.phone || ""}</td>
-        <td>${p.dob ? formatDate(p.dob) : ""}</td>
-        <td>
-          <!-- Nút sửa/xóa sẽ làm sau -->
-        </td>
+        <td>${p.id}</td>
+        <td>${p.name}</td>
+        <td>${p.age}</td>
+        <td>${p.gender}</td>
+        <td>${p.address}</td>
+        <td>${p.phone}</td>
+        <td>${formatDate(p.dob)}</td>
+        <td><button onclick="deletePatient(${index})">Xóa</button></td>
       </tr>
     `;
   });
@@ -32,10 +28,10 @@ function renderPatients(data) {
 
 function formatDate(dob) {
   const d = new Date(dob);
-  return d.toLocaleDateString('vi-VN');
+  return d.toLocaleDateString("vi-VN");
 }
 
-form.addEventListener("submit", async function (e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const id = document.getElementById("patientId").value.trim();
@@ -46,22 +42,32 @@ form.addEventListener("submit", async function (e) {
   const phone = document.getElementById("phone").value.trim();
   const dob = document.getElementById("dob").value;
 
-  if (!id || !name || !age || !gender || !address || !phone || !dob) return;
+  const existingIndex = patients.findIndex(p => p.id === id);
+  const patientData = { id, name, age, gender, address, phone, dob };
 
-  await fetch('/api/patients', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id, name, age, gender, address, phone, dob })
-  });
+  if (existingIndex >= 0) {
+    patients[existingIndex] = patientData;
+  } else {
+    patients.push(patientData);
+  }
 
-  await fetchPatients();
+  savePatients();
+  renderPatients(patients);
   form.reset();
 });
 
+function deletePatient(index) {
+  if (confirm("Bạn có chắc muốn xóa?")) {
+    patients.splice(index, 1);
+    savePatients();
+    renderPatients(patients);
+  }
+}
+
 searchInput.addEventListener("input", function () {
   const keyword = this.value.toLowerCase();
-  const filtered = patients.filter(p => p.name && p.name.toLowerCase().includes(keyword));
+  const filtered = patients.filter(p => p.name.toLowerCase().includes(keyword));
   renderPatients(filtered);
 });
 
-window.onload = fetchPatients;
+window.onload = () => renderPatients(patients);
