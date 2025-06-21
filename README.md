@@ -24,3 +24,14 @@ Yêu cầu chính:
 ### 2.UML Sequence Diagram
 <img src ="img/Lưu đồ chức năng.png">
 
+#### 1.Findpatitent
+<img src ="img/Findpatitent.png">
+
+#### 2.FindBenhan
+<img src ="img/FindBenhan.png">
+
+#### 3.Schedule
+<img src ="img/Schedule.png">
+
+#### 4.Room
+<img src ="img/Room.png">

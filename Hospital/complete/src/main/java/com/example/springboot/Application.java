@@ -1,9 +1,11 @@
 package com.example.springboot;
 
-public class Application {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-	public static void main(String[] args) {
-		
-		
-	}
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 }
